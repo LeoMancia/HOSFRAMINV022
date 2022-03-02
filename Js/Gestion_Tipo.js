@@ -23,7 +23,7 @@ $(document).ready(function(){
     });
 
     //TESTEO
-
+    
     function rellenar_tipos() {
         funcion="rellenar_tipos";
         $.post('../Controlador/tipoController.php',{funcion},(response)=>{
@@ -33,16 +33,15 @@ $(document).ready(function(){
             Tipos.forEach(tipos => {
                 template=`
                 <tr prodID="${tipos.id}">
-                    <td>${tipos.id}</td>
                     <td>${tipos.tipo}</td>
-                    <td><button class="borrar-producto btn btn-danger btn-lock"><i class="fas fa-times-circle"></i></a></td>
+                    <td><button class="actualizar-tipo btn btn-success btn-lock"><i class="fas fa-times-circle"></i></a></td>
+                    <td><button class="ver-tipo btn btn-info btn-lock"><i class="fas fa-times-circle"></i></a></td>
+                    <td><button class="borrar-tipo btn btn-danger btn-lock"><i class="fas fa-times-circle"></i></a></td>
                 </tr>
             `;
             console.log(tipos.id);
             $('#lista-compra').append(template);
             });
-            
-            
         });
 
     }

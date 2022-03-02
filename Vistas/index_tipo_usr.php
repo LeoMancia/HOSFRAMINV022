@@ -74,7 +74,7 @@
                                     <tr>
                                         <th scope="col">Tipos de Usuarios</th>                                       
                                         <th scope="col">Actualizar</th>
-                                        <th scope="col">Eliminar</th>
+                                        <th scope="col">Ver</th>
                                         <th scope="col">Eliminar</th>
                                     </tr>
                                 </thead>
