@@ -1,0 +1,97 @@
+body {
+    font-family: "Lato", sans-serif;
+    background-image: url("https://www.transparencia.gob.sv/system/institutions/avatars/000/000/122/profile/HOSPITAL-AHUCHAP%C3%81N.png?1625666383");
+}
+
+
+
+.main-head {
+    height: 150px;
+    background: #FFF;
+
+}
+
+.sidenav {
+    height: 100%;
+    overflow-x: hidden;
+    padding-top: 70px;
+}
+
+
+.main {
+    padding: 0px 10px;
+}
+
+
+.login-main-text {
+    margin-top: 20%;
+    padding: 60px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.login-main-text h2 {
+    font-weight: 300;
+}
+
+.btn-black {
+    background-color: #000 !important;
+    color: #fff;
+    transform: translateX(20px);
+}
+
+.login-form {
+    border-radius: 5px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    background-color: #fff;
+    transform: translateY(-170px);
+}
+
+.pass{
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.form-control {
+    transform: translateX(20px);
+    max-width: 300px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .login-form {
+        margin-top: 50%;
+    }
+
+    .register-form {
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .main {
+        margin-left: 40%;
+    }
+
+    .sidenav {
+        width: 40%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+    .login-form {
+        margin-top: 80%;
+    }
+
+    .register-form {
+        margin-top: 20%;
+    }
+}
+
