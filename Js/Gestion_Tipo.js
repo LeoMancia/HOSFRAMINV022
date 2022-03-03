@@ -1,6 +1,7 @@
 $(document).ready(function(){
-    rellenar_tipos();
+    
     var funcion;
+    let id;
     //bloque de codigo que crea un nuevo usuario
     $('#creartipous').submit(e=>{
         let tipo = $('#tipo').val();
@@ -11,7 +12,7 @@ $(document).ready(function(){
             $('#add').show(200);
             $('#add').hide(5000);
             $('#creartipous').trigger('reset');
-            buscar_datos();
+            
           } else {
             $('#noadd').hide('slow');
             $('#noadd').show(200);
@@ -19,11 +20,11 @@ $(document).ready(function(){
             $('#creartipous').trigger('reset');
           }
         });
-        e.preventDefault();
+       
     });
 
     //TESTEO
-    
+    rellenar_tipos();
     function rellenar_tipos() {
         funcion="rellenar_tipos";
         $.post('../Controlador/tipoController.php',{funcion},(response)=>{
@@ -32,18 +33,29 @@ $(document).ready(function(){
             let template='';
             Tipos.forEach(tipos => {
                 template=`
-                <tr prodID="${tipos.id}">
+                <tr tipoID="${tipos.id}">
                     <td>${tipos.tipo}</td>
                     <td><button class="actualizar-tipo btn btn-success btn-lock"><i class="fas fa-times-circle"></i></a></td>
                     <td><button class="ver-tipo btn btn-info btn-lock"><i class="fas fa-times-circle"></i></a></td>
                     <td><button class="borrar-tipo btn btn-danger btn-lock"><i class="fas fa-times-circle"></i></a></td>
                 </tr>
             `;
-            console.log(tipos.id);
             $('#lista-compra').append(template);
-            });
+            });        
+            
         });
-
     }
+
+    //TESTEO ELIMINAR
+    $(document).on('click','.borrar-tipo',(e)=>{
+        const elemento= $(this)[0].activeElement.parentElement.parentElement;
+        const id=$(elemento).attr('tipoID');
+        funcion='eliminar_tipo';
+        $('#id_tipo').val(id);
+        $('#funcion').val(funcion);
+        console.log(id);
+        console.log(funcion);
+
+    })  
 
 });

@@ -30,5 +30,22 @@ class Tipo{
 
     }
 
+
+    //TESTEO DE METODO ELIMINAR
+
+    function eliminar($id_eliminado){
+        $sql = "SELECT codigo_tipo FROM tipo_user WHERE codigo_tipo=:id_eliminado";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_eliminado'=>$id_eliminado));
+        $this->objetos=$query->fetchall();
+        if (!empty($this->objetos)) {
+            $sql = "DELETE FROM tipo_user WHERE codigo_tipo=:id";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id'=>$id_eliminado));
+            echo 'eliminado';
+        }else {
+            echo 'No eliminado';
+        }
+    }
 }
 ?>

@@ -25,6 +25,20 @@ if ($_POST['funcion']=='rellenar_tipos') {
     echo $jsonstring;
 }
 
+//TESTEO DE METODO DELETE
+//FUNCIONAL AL 0%
+if ($_POST['funcion']=='eliminar_tipo') {
+    $id_eliminado=$_POST['id_tipo'];
+    $tipo_us->eliminar($id_eliminado);
+       
+}
+
+
+
+
+   
+
+
 /*Notas:
 - $tipo_us = new Tipo(); = Es la instancia del modelo Tipo.php donde se hace la peticion INSERT en la BD
 - $_POST['funcion']=='crear_tipo' = Se obtiene mediante el archivo Gestion_Tipo.js donde se obtienen los atributos de la funcion y que tipo de funcion será "CRUD"
