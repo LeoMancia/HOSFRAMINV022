@@ -95,3 +95,4 @@
 include_once 'layout/footer.php';
 ?>
 <script src="../Js/Gestion_Tipo.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

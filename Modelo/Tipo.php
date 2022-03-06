@@ -19,7 +19,7 @@ class Tipo{
 
     //TESTEO//
 
-    //Obtener datos de la base de datos
+    //Obtener datos de la base de datos funcionando al 50%
 
     function rellenar_tipos(){
         $sql = "SELECT * FROM tipo_user";
@@ -31,20 +31,16 @@ class Tipo{
     }
 
 
-    //TESTEO DE METODO ELIMINAR
+    //TESTEO DE METODO ELIMINAR funcionando a 100%
 
-    function eliminar($id_eliminado){
-        $sql = "SELECT codigo_tipo FROM tipo_user WHERE codigo_tipo=:id_eliminado";
+    function eliminar_tipo($id){
+        $sql = "DELETE FROM tipo_user WHERE codigo_tipo=:id";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id_eliminado'=>$id_eliminado));
-        $this->objetos=$query->fetchall();
-        if (!empty($this->objetos)) {
-            $sql = "DELETE FROM tipo_user WHERE codigo_tipo=:id";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(':id'=>$id_eliminado));
-            echo 'eliminado';
+        $query->execute(array(':id'=>$id));
+        if (!empty($query->execute(array(':id'=>$id)))) {
+            echo 'borrado';
         }else {
-            echo 'No eliminado';
+            echo 'noborrado';
         }
     }
 }
