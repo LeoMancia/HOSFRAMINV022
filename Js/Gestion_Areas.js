@@ -2,60 +2,62 @@ $(document).ready(function(){
     //Declaracion de variables 
     var funcion;
     var edit = false;
-    rellenar_tipos();
-    //bloque de codigo que crea y modifica un usuario
-    $('#creartipous').submit(e=>{
-        let tipo = $('#tipo').val();
-        let id_editado = $('#id_editar_tipo').val();
+    rellenar_areas();
+    //bloque de codigo que crea y modifica un usuario FUNCIONANDO PARA AREAS
+    $('#crearcargos').submit(e=>{
+        let area = $('#area').val();
+        let cargo = $('#cargo').val();
+        let id_editado = $('#id_cargo').val();
         
         if (edit==false) {
-          funcion='crear_tipo';
+          funcion='crear_area';
         } else {
-          funcion='editar_tipo';
+          funcion='editar_area';
         }
          
-        $.post('../Controlador/tipoController.php',{tipo,id_editado,funcion},(response)=>{
+        $.post('../Controlador/areaController.php',{area,cargo,id_editado,funcion},(response)=>{
           console.log(response)
           if (response=='add') {              
             $('#add').hide('slow');
             $('#add').show(200);
             $('#add').hide(5000);
-            $('#creartipous').trigger('reset');
-            rellenar_tipos();
+            $('#crearcargos').trigger('reset');
+            rellenar_areas();
             
           }  if (response=='noadd') {
             $('#noadd').hide('slow');
             $('#noadd').show(200);
             $('#noadd').hide(5000);
-            $('#creartipous').trigger('reset');
+            $('#crearcargos').trigger('reset');
           } if (response=='editado') {
             $('#edit-tipo').hide('slow');
             $('#edit-tipo').show(200);
             $('#edit-tipo').hide(5000);
-            $('#creartipous').trigger('reset');
+            $('#crearcargos').trigger('reset');
             
-            rellenar_tipos();
+            rellenar_areas();
           }
           edit=false;
         });
        e.preventDefault();
     });
 
-    //TESTEO Obtener datos
+    //TESTEO Obtener datos FUNCIONANDO PARA AREAS
     
-    function rellenar_tipos() {
-        funcion="rellenar_tipos";
-        $.post('../Controlador/tipoController.php',{funcion},(response)=>{
+    function rellenar_areas() {
+        funcion="rellenar_areas";
+        $.post('../Controlador/areaController.php',{funcion},(response)=>{
             console.log(response);
-            const Tipos = JSON.parse(response);
+            const Areas = JSON.parse(response);
             let template='';
             $('#Table > tbody').empty();
-            Tipos.forEach(tipos => {
+            Areas.forEach(areas => {
                 template=`
-                <tr tipoID="${tipos.id}" tiponombre="${tipos.tipo}">
-                    <td>${tipos.tipo}</td>
-                    <td><button class="actualizar-tipo btn btn-success btn-lock" title="Editar tipo" data-bs-toggle="modal" data-bs-target="#creartipous"><i class="fas fa-times-circle"></i></a></td>
-                    <td><button class="borrar-tipo btn btn-danger btn-lock"><i class="fas fa-times-circle"></i></a></td>
+                <tr areaID="${areas.id}" areanombre="${areas.area}" cargonombre="${areas.cargo}">
+                    <td>${areas.area}</td>
+                    <td>${areas.cargo}</td>
+                    <td><button class="actualizar-area btn btn-success btn-lock" title="Editar tipo" data-bs-toggle="modal" data-bs-target="#crearcargos"><i class="fas fa-times-circle"></i></a></td>
+                    <td><button class="borrar-area btn btn-danger btn-lock"><i class="fas fa-times-circle"></i></a></td>
                 </tr>
                 $('#Table > tbody').append(rows);
             `;
@@ -66,14 +68,15 @@ $(document).ready(function(){
     }
 
     //TESTEO ELIMINAR
-    $(document).on('click','.borrar-tipo',(e)=>{
-        funcion ='eliminar_tipo';
+    $(document).on('click','.borrar-area',(e)=>{
+        funcion ='eliminar_area';
         const elemento= $(this)[0].activeElement.parentElement.parentElement;
-        const id=$(elemento).attr('tipoID');
-        const nombre=$(elemento).attr('tiponombre');
+        const id=$(elemento).attr('areaID');
+        const area=$(elemento).attr('areanombre');
+        const cargo=$(elemento).attr('cargonombre');
         console.log(id);
-        console.log(nombre);
-       
+        console.log(area);
+        console.log(cargo);
         console.log(funcion);
         $('#id').val(id);
         $('#funcion').val(funcion);
@@ -86,7 +89,7 @@ $(document).ready(function(){
           })
           
           swalWithBootstrapButtons.fire({
-            title: '¿Eliminar '+nombre+'?',
+            title: '¿Eliminar '+cargo+' dependencia de '+area+'?',
             text: "Esta accion no se puede revertir",
             icon: 'warning',
             showCancelButton: true,
@@ -95,7 +98,7 @@ $(document).ready(function(){
             reverseButtons: true
           }).then((result) => {
             if (result.isConfirmed) {
-                $.post('../Controlador/tipoController.php',{id,funcion},(response)=>{ 
+                $.post('../Controlador/areaController.php',{id,funcion},(response)=>{ 
                   edit=false;
                     if (response=='borrado') {
                         swalWithBootstrapButtons.fire(
@@ -103,12 +106,12 @@ $(document).ready(function(){
                             'Registro eliminado satisfactoriamente.',
                             'success'
                         )
-                        rellenar_tipos();
+                        rellenar_areas();
                     } else {
                         swalWithBootstrapButtons.fire(
                             'No se pudo eliminar!',
                             'Ha surgido un problema inesperado',
-                            'success'
+                            'warning'
                         )
                     }
                     
@@ -125,16 +128,23 @@ $(document).ready(function(){
 
     })  
 
-    //TESTEO 07/03/2022
+    //TESTEO 08/03/2022
     //Funcion para modificar el tipo de usuario
-    $(document).on('click','.actualizar-tipo',(e)=>{
-      const elemento= $(this)[0].activeElement.parentElement.parentElement;
-      const id=$(elemento).attr('tipoID');
-      const nombre=$(elemento).attr('tiponombre');
-      $('#id_editar_tipo').val(id);
-      $('#tipo').val(nombre);
+    $(document).on('click','.actualizar-area',(e)=>{
+        const elemento= $(this)[0].activeElement.parentElement.parentElement;
+        const id=$(elemento).attr('areaID');
+        const area=$(elemento).attr('areanombre');
+        const cargo=$(elemento).attr('cargonombre');
+        console.log(id);
+        console.log(area);
+        console.log(cargo);       
+     
+
+      $('#area').val(area);
+      $('#cargo').val(cargo);
+      $('#id_cargo').val(id);
       edit=true;
-      console.log(id, nombre, edit);
+      console.log(id, area, cargo, edit);
     })
 
 });

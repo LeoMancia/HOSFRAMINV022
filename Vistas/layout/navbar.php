@@ -32,6 +32,15 @@
             <a class="nav-link active" aria-current="page" href="../Vistas/index_tipo_usr.php">Crear Tipos de Usuarios</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../Vistas/areas.php">Cargos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Insumos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Usuarios</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Usuarios</a>
           </li>
           <li class="nav-item">

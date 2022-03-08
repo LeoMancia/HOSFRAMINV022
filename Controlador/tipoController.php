@@ -3,10 +3,18 @@ include_once '../Modelo/Tipo.php';
 $tipo_us = new Tipo();
 session_start();
 
-//Metodo crear tipo de usuario
+//Metodo crear tipo de usuario al 100%
 if ($_POST['funcion']=='crear_tipo') {
     $tipo = $_POST['tipo'];
     $tipo_us->crear($tipo);
+}
+
+//TESTEO
+//Metodo editar tipo de usuario al 100%
+if ($_POST['funcion']=='editar_tipo') {
+    $id_editado = $_POST['id_editado'];
+    $tipo = $_POST['tipo'];
+    $tipo_us->editar($tipo, $id_editado);
 }
 
 
@@ -26,7 +34,7 @@ if ($_POST['funcion']=='rellenar_tipos') {
 }
 
 //TESTEO DE METODO DELETE
-//FUNCIONAL AL 0%
+//FUNCIONAL AL 100%
 if ($_POST['funcion']=='eliminar_tipo') {
     $id=$_POST['id'];
     $tipo_us->eliminar_tipo($id);

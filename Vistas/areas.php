@@ -3,7 +3,7 @@ session_start();
 if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
     include_once 'layout/header.php';   
 ?>
-    <title>Tipos</title>
+    <title>Area administrativa de cargos</title>
 <?php 
     include_once 'layout/navbar.php';
 ?>
@@ -14,11 +14,11 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
 </section>
 <!--Modal de creacion de nuevo usuario-->
  <!-- Modal -->
-<div class="modal fade" id="creartipous" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="crearcargos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Creacion de tipos de Usuarios</h5>
+        <h5 class="modal-title">Creacion de cargos y areas</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
         </button>        
       </div>
@@ -33,16 +33,20 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
               </div>
               <!--Mensaje de Alerta error-->
               <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
-                    <span><i class="fas fa-times m-1"></i>¡Error!, ¡Hubo un eror!</span>
+                    <span><i class="fas fa-times m-1"></i>¡Error!, ¡Hubo un error!</span>
               </div>    
                  <div class="text-center">
                     <img src="../Img/logo.png" class="rounded-circle" alt="Cinque Terre" width="204" height="136">
               </div>
               <form id="form-crear">
                     <div class="form-group">
-                        <label for="tipo">Tipo de Usuario</label>
-                        <input id="tipo" type="text" class="form-control" placeholder="Ingresar tipo de usuario" required>  
-                        <input type="hidden"    id="id_editar_tipo">                      
+                        <label for="area">Área</label>
+                        <input id="area" type="text" class="form-control" placeholder="Ingresar el area" required>  
+                        <input type="hidden"    id="id_cargo">                      
+                    </div>
+                    <div class="form-group">
+                        <label for="cargo">Cargos</label>
+                        <input id="cargo" type="text" class="form-control" placeholder="Ingrese el cargo" required>  
                     </div>
                    
       </div>
@@ -56,17 +60,17 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
 </div>
 <!--Fin Modal-->
 
-<!--Formulario de creacion de Tipos-->
+<!--Formulario de creacion de cargos-->
 <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left">Tipos de Usuarios</h2>
+                        <h2 class="pull-left">Areas y Cargos</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#creartipous">  Crear Tipo </button>                
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearcargos">  Crear Tipo </button>                
                 </div>
             </div>        
         </div>
@@ -77,7 +81,8 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
                 <table class="compra table table-hover text-nowrap" id="Table">
                                 <thead class='table-success'>
                                     <tr>
-                                        <th scope="col">Tipos de Usuarios</th>                                       
+                                        <th scope="col">Area</th>  
+                                        <th scope="col">Cargo</th>                                       
                                         <th scope="col">Actualizar</th>
                                         <th scope="col">Eliminar</th>
                                     </tr>
@@ -95,6 +100,9 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
 
 
 
+
+
+
 <?php
 include_once 'layout/footer.php';
 }
@@ -102,5 +110,5 @@ else {
     header('Location: ../index.php');
 }
 ?>
-<script src="../Js/Gestion_Tipo.js"></script>
+<script src="../Js/Gestion_Areas.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
