@@ -4,10 +4,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <link type="text/css" rel="stylesheet" href="../Css/nav.css" />
     <title>Hello, Admin</title>
   </head>
   <body>
@@ -15,12 +15,16 @@
 
   
  <!--Navbar de opciones-->
-    <nav class="navbar navbar-light bg-light fixed-top">
-   <div class="container-fluid">
+<nav class="navbar navbar-light bg-light fixed-top">
+   <div class="container-fluid menu_bar">
     <a class="navbar-brand" href="../Vistas/Vista_principal_admin.php">HOSFRAM</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <!--Dropdown para carrrito-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+  </div>
+    <!--Fin de dropdown para carrrito-->
+     
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Administración</h5>
@@ -35,7 +39,7 @@
             <a class="nav-link active" aria-current="page" href="../Vistas/areas.php">Cargos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Insumos</a>
+            <a class="nav-link active" aria-current="page" href="../Vistas/index_insumos.php">Insumos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Usuarios</a>

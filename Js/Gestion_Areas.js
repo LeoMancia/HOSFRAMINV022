@@ -53,9 +53,8 @@ $(document).ready(function(){
             $('#Table > tbody').empty();
             Areas.forEach(areas => {
                 template=`
-                <tr areaID="${areas.id}" areanombre="${areas.area}" cargonombre="${areas.cargo}">
+                <tr areaID="${areas.id}" areanombre="${areas.area}">
                     <td>${areas.area}</td>
-                    <td>${areas.cargo}</td>
                     <td><button class="actualizar-area btn btn-success btn-lock" title="Editar tipo" data-bs-toggle="modal" data-bs-target="#crearcargos"><i class="fas fa-times-circle"></i></a></td>
                     <td><button class="borrar-area btn btn-danger btn-lock"><i class="fas fa-times-circle"></i></a></td>
                 </tr>

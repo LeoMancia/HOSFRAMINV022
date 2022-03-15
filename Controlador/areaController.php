@@ -6,8 +6,7 @@ session_start();
 //Metodo crear tipo de usuario al 100%
 if ($_POST['funcion']=='crear_area') {
     $area = $_POST['area'];
-    $cargo = $_POST['cargo'];
-    $area_us->crear($area,$cargo);
+    $area_us->crear($area);
 }
 
 
@@ -20,7 +19,6 @@ if ($_POST['funcion']=='rellenar_areas') {
         $json[]=array(
             'id'=>$objeto->codigo_crg,
             'area'=>$objeto->area,
-            'cargo'=>$objeto->cargo
         );
     }
     $jsonstring=json_encode($json);

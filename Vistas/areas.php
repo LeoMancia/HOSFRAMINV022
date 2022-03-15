@@ -18,7 +18,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Creacion de cargos y areas</h5>
+        <h5 class="modal-title">Creacion de areas</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
         </button>        
       </div>
@@ -44,11 +44,6 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
                         <input id="area" type="text" class="form-control" placeholder="Ingresar el area" required>  
                         <input type="hidden"    id="id_cargo">                      
                     </div>
-                    <div class="form-group">
-                        <label for="cargo">Cargos</label>
-                        <input id="cargo" type="text" class="form-control" placeholder="Ingrese el cargo" required>  
-                    </div>
-                   
       </div>
       <div class="modal-footer">
             <button type="submit" class="btn btn-outline-success float-right m-1">Guardar</button>
@@ -66,7 +61,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
             <div class="row">
                 <div class="col-md-6">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left">Areas y Cargos</h2>
+                        <h2 class="pull-left">Areas</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -82,7 +77,6 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
                                 <thead class='table-success'>
                                     <tr>
                                         <th scope="col">Area</th>  
-                                        <th scope="col">Cargo</th>                                       
                                         <th scope="col">Actualizar</th>
                                         <th scope="col">Eliminar</th>
                                     </tr>

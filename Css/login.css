@@ -95,3 +95,9 @@ body {
     }
 }
 
+@media screen and (max-width: 320px) {
+    insumo {
+      display: block;
+      overflow-x: auto;
+    }
+}

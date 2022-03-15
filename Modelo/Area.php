@@ -10,10 +10,10 @@ class Area{
     }
 
     //crear un nuevo usuario mediante modal
-    function crear($area,$cargo){
-        $sql = "INSERT INTO cargo(area,cargo) VALUES(:area, :cargo)";
+    function crear($area){
+        $sql = "INSERT INTO cargo(area) VALUES(:area)";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':area'=>$area,':cargo'=>$cargo));
+        $query->execute(array(':area'=>$area));
         echo 'add';
     }
 
