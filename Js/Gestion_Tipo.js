@@ -3,6 +3,11 @@ $(document).ready(function(){
     var funcion;
     var edit = false;
     rellenar_tipos();
+    //Bloque que limpia los formularios del modal
+    function limpiarforms(){
+      $('#tipo').val('');
+      $('#id_editar_tipo').val('');
+    }
     //bloque de codigo que crea y modifica un usuario
     $('#creartipous').submit(e=>{
         let tipo = $('#tipo').val();
@@ -22,18 +27,17 @@ $(document).ready(function(){
             $('#add').hide(5000);
             $('#creartipous').trigger('reset');
             rellenar_tipos();
-            
+            limpiarforms();
           }  if (response=='noadd') {
             $('#noadd').hide('slow');
             $('#noadd').show(200);
             $('#noadd').hide(5000);
-            $('#creartipous').trigger('reset');
+            limpiarforms();
           } if (response=='editado') {
             $('#edit-tipo').hide('slow');
             $('#edit-tipo').show(200);
             $('#edit-tipo').hide(5000);
-            $('#creartipous').trigger('reset');
-            
+            limpiarforms();            
             rellenar_tipos();
           }
           edit=false;

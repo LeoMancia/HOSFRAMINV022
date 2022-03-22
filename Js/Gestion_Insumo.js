@@ -7,9 +7,6 @@ $(document).ready(function(){
     let date = new Date();
     rellenar_insumos();
 
-    //Bloque de codigo que cierra el modal conforme el timpo
-    
-    
     //Bloque que limpia los formularios del modal
     function limpiarforms(){
       $('#codigo').val('');

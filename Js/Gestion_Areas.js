@@ -3,10 +3,15 @@ $(document).ready(function(){
     var funcion;
     var edit = false;
     rellenar_areas();
+    //Bloque que limpia los formularios del modal
+    function limpiarforms(){
+      $('#area').val('');
+      $('#id_cargo').val('');
+      
+    }
     //bloque de codigo que crea y modifica un usuario FUNCIONANDO PARA AREAS
     $('#crearcargos').submit(e=>{
         let area = $('#area').val();
-        let cargo = $('#cargo').val();
         let id_editado = $('#id_cargo').val();
         
         if (edit==false) {
@@ -15,26 +20,25 @@ $(document).ready(function(){
           funcion='editar_area';
         }
          
-        $.post('../Controlador/areaController.php',{area,cargo,id_editado,funcion},(response)=>{
+        $.post('../Controlador/areaController.php',{area,id_editado,funcion},(response)=>{
           console.log(response)
           if (response=='add') {              
             $('#add').hide('slow');
             $('#add').show(200);
             $('#add').hide(5000);
-            $('#crearcargos').trigger('reset');
             rellenar_areas();
-            
+            limpiarforms();
           }  if (response=='noadd') {
             $('#noadd').hide('slow');
             $('#noadd').show(200);
             $('#noadd').hide(5000);
-            $('#crearcargos').trigger('reset');
+            limpiarforms();
           } if (response=='editado') {
             $('#edit-tipo').hide('slow');
             $('#edit-tipo').show(200);
             $('#edit-tipo').hide(5000);
             $('#crearcargos').trigger('reset');
-            
+            limpiarforms();
             rellenar_areas();
           }
           edit=false;
@@ -72,10 +76,8 @@ $(document).ready(function(){
         const elemento= $(this)[0].activeElement.parentElement.parentElement;
         const id=$(elemento).attr('areaID');
         const area=$(elemento).attr('areanombre');
-        const cargo=$(elemento).attr('cargonombre');
         console.log(id);
         console.log(area);
-        console.log(cargo);
         console.log(funcion);
         $('#id').val(id);
         $('#funcion').val(funcion);
@@ -88,7 +90,7 @@ $(document).ready(function(){
           })
           
           swalWithBootstrapButtons.fire({
-            title: '¿Eliminar '+cargo+' dependencia de '+area+'?',
+            title: '¿Eliminar '+area+'?',
             text: "Esta accion no se puede revertir",
             icon: 'warning',
             showCancelButton: true,
@@ -133,17 +135,14 @@ $(document).ready(function(){
         const elemento= $(this)[0].activeElement.parentElement.parentElement;
         const id=$(elemento).attr('areaID');
         const area=$(elemento).attr('areanombre');
-        const cargo=$(elemento).attr('cargonombre');
         console.log(id);
         console.log(area);
-        console.log(cargo);       
      
 
       $('#area').val(area);
-      $('#cargo').val(cargo);
       $('#id_cargo').val(id);
       edit=true;
-      console.log(id, area, cargo, edit);
+      console.log(id, area, edit);
     })
 
 });

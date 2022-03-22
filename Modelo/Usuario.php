@@ -7,28 +7,30 @@ class Usuario{
         $this->acceso = $db->pdo;
     }
     function Loguearse($user, $pass){
-        $sql="SELECT * FROM usuario inner join tipo_user on iduser=us_tipo where username=:user and pasword=:pass";
+        $sql="SELECT * FROM usuario inner join tipo_user on us_tipo=codigo_tipo where username=:user and pasword=:pass";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':user'=>$user, ':pass'=>$pass));
         $this->objetos = $query->fetchall();
         return $this->objetos;
         
     }
-    /*
-    function obtener_datos($id){
-        $sql="SELECT * FROM usuario JOIN tipo_us on us_tipo=id_tipo_us AND id_usuario=:id";
+    
+    function rellenar_usuarios(){
+        $sql = "SELECT * FROM usuario JOIN cargo ON us_crg = codigo_crg JOIN tipo_user ON us_tipo = codigo_tipo WHERE nombre_us NOT LIKE '' ORDER BY iduser LIMIT 10";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id'=>$id));
-        $this->objetos = $query->fetchall();
+        $query->execute();
+        $this->objetos=$query->fetchall();
         return $this->objetos;
     }
 
-    function editar($id_usuario,$telefono,$residencia,$correo,$sexo,$adicional){
-        $sql="UPDATE usuario SET telefono_us=:telefono, residencia_us=:residencia, correo_us=:correo, sexo_us=:sexo, adicional_us=:adicional WHERE id_usuario=:id";
+    
+    function editar($nombre,$apellido,$username,$password,$area,$tipouser,$id_editado){
+        $sql="UPDATE usuario SET nombre_us=:nombre, apellido_us=:apellido, username=:username, pasword=:password, us_crg=:area, us_tipo=:tipouser WHERE iduser=:id_editado";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id'=>$id_usuario,':telefono'=>$telefono,':residencia'=>$residencia,':correo'=>$correo,':sexo'=>$sexo,':adicional'=>$adicional));
+        $query->execute(array(':id_editado'=>$id_editado,':nombre'=>$nombre,':apellido'=>$apellido,':username'=>$username,':password'=>$password,':area'=>$area,':tipouser'=>$tipouser));
+        echo 'editado';
     }
-
+    /*
     function cambiar_contra($id_usuario,$oldpass,$newpass){
         $sql="SELECT * FROM usuario WHERE id_usuario=:id AND contrasena_us=:oldpass";
         $query = $this->acceso->prepare($sql);
@@ -74,25 +76,27 @@ class Usuario{
         }
         
     }
+
+    */
     //crear un nuevo usuario mediante modal
-    function crear($nombre,$apellido,$edad,$dui,$pass,$tipo,$foto){
+    function crear($nombre,$apellido,$username,$contrasena,$area,$tipouser){
         //Select para verificar si existe un usuario con el mismo dui
-        $sql = "SELECT id_usuario FROM  usuario WHERE dui_us=:dui";
+        $sql = "SELECT iduser FROM usuario WHERE username=:username";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':dui'=>$dui));
+        $query->execute(array(':username'=>$username));
         $this->objetos=$query->fetchall();
         if (!empty($this->objetos)) {
             echo 'noadd';
         }
         else{
-            $sql = "INSERT INTO usuario(nombre_us,apellido_us,edad_us,dui_us,contrasena_us,foto,us_tipo) VALUES(:nombre,:apellido,:edad,:dui,:pass,:foto,:tipo)";
+            $sql = "INSERT INTO usuario(nombre_us,apellido_us,username,pasword,us_crg,us_tipo) VALUES(:nombre,:apellido,:username,:contrasena,:area,:tipouser)";
             $query = $this->acceso->prepare($sql);
-            $query->execute(array(':nombre'=>$nombre,':apellido'=>$apellido,':edad'=>$edad,':dui'=>$dui,':pass'=>$pass,':tipo'=>$tipo,':foto'=>$foto));
+            $query->execute(array(':nombre'=>$nombre,':apellido'=>$apellido,':username'=>$username,':contrasena'=>$contrasena,':area'=>$area,':tipouser'=>$tipouser));
             echo 'add';
         }
     }
 
-    //funcion ascender y descender
+    /*funcion ascender y descender
     function ascender($pass,$id_ascendido, $id_usuario){
         $sql = "SELECT id_usuario FROM usuario WHERE id_usuario=:id_usuario AND contrasena_us=:pass";
         $query = $this->acceso->prepare($sql);
@@ -124,22 +128,18 @@ class Usuario{
             echo 'No descendido';
         }
     }
-
-    function eliminar($pass,$id_eliminado, $id_usuario){
-        $sql = "SELECT id_usuario FROM usuario WHERE id_usuario=:id_usuario AND contrasena_us=:pass";
-        $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id_usuario'=>$id_usuario,':pass'=>$pass));
-        $this->objetos=$query->fetchall();
-        if (!empty($this->objetos)) {
-            $sql = "DELETE FROM usuario WHERE id_usuario=:id";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(':id'=>$id_eliminado));
-            echo 'eliminado';
-        }else {
-            echo 'No eliminado';
-        }
+*/
+function eliminar_usuario($id){
+    $sql = "DELETE FROM usuario WHERE iduser=:id";
+    $query = $this->acceso->prepare($sql);
+    $query->execute(array(':id'=>$id));
+    if (!empty($query->execute(array(':id'=>$id)))) {
+        echo 'borrado';
+    }else {
+        echo 'noborrado';
     }
-    */
+}
+    
 }
 
 ?>

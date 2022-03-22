@@ -46,7 +46,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
                     </div>
       </div>
       <div class="modal-footer">
-            <button type="submit" class="btn btn-outline-success float-right m-1">Guardar</button>
+            <button type="submit" class="btn btn-outline-success float-right m-1" onClick="setTimeout(cerrar,1000)">Guardar</button>
             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
             </form>
       </div>
@@ -65,7 +65,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
                     </div>
                 </div>
                 <div class="col-md-6">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearcargos">  Crear Tipo </button>                
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearcargos" onClick="limpiarforms()">  Crear Tipo </button>                
                 </div>
             </div>        
         </div>
@@ -104,5 +104,15 @@ else {
     header('Location: ../index.php');
 }
 ?>
+<script>
+    function cerrar() {
+        $('#crearcargos').modal('hide');
+    }
+    function limpiarforms(){
+        $('#id_cargo').val('');
+      $('#area').val('');
+     
+    }
+</script>
 <script src="../Js/Gestion_Areas.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

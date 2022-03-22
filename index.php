@@ -6,7 +6,7 @@
     <title>Login</title>
     <link rel = "preconnect" href = "https://fonts.gstatic.com">
 <link href = "https://fonts.googleapis.com/css2? family = Poppins: wght @ 700 & display = swap" rel = "hoja de estilo">
-    <link rel="stylesheet" type="text/css " href="ss/style.css">
+    <!--<link rel="stylesheet" type="text/css " href="Css/style.css">-->
     <link rel="stylesheet" type="text/css " href="Css/css/all.min.css">
      <!-- Estilo CSS-->
     <link rel="stylesheet" href="./Css/login.css">

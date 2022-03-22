@@ -14,13 +14,14 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
 </br>
 </section>
 
+
 <!--Modal de creacion de nuevo insumo-->
  <!-- Modal -->
- <div class="modal fade" id="crearinsumos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="crearusuarios" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Creacion de Insumos</h5>
+        <h5 class="modal-title">Creacion de Usuarios</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
         </button>        
       </div>
@@ -30,42 +31,42 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
             <div class="alert alert-success text-center" id="add" style='display:none;'>
                   <span><i class="fas fa-check m-1"></i>Se creó exitosamente!</span>
               </div>
-              <div class="alert alert-success text-center" id="edit-tipo" style='display:none;'>
+              <div class="alert alert-success text-center" id="edit-user" style='display:none;'>
                   <span><i class="fas fa-check m-1"></i>Se modificó exitosamente!</span>
               </div>
               <!--Mensaje de Alerta error-->
               <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
-                    <span><i class="fas fa-times m-1"></i>¡Error!, ¡Hubo un eror!</span>
+                    <span><i class="fas fa-times m-1"></i>¡Error!, ¡Hubo un eror!, comunicarse con Informática</span>
               </div>    
                  <div class="text-center">
-                    <img src="../Img/logo.png" class="rounded-circle" alt="Cinque Terre" width="204" height="136">
+                    <img src="../Img/logo.png" class="rounded-circle" alt="Cinque Terre" width="136" height="136">
               </div>
               <form id="form-crear">
                     <div class="form-group">
-                        <label for="codigo">Codigo de Insumo</label>
-                        <input id="codigo" type="text" class="form-control" placeholder="123456789" required>  
-                                        
+                        <label for="nombreusuario">Nombres</label>
+                        <input id="nombreusuario" type="text" class="form-control" required>  
+                        <input type="hidden"    id="id_usuario">                 
                     </div>
                     <div class="form-group">
-                        <label for="nominsumo">Nombre de Insumo</label>
-                        <input id="nominsumo" type="text" class="form-control"  required>  
-                                       
+                        <label for="apellidousuario">Apellidos</label>
+                        <input id="apellidousuario" type="text" class="form-control"  required>                                        
                     </div>
                     <div class="form-group">
-                        <label for="desinsumo">Descripción</label>
-                        <input id="desinsumo" type="text" class="form-control"  required>  
-                                          
+                        <label for="username">Usuario</label>
+                        <input id="username" type="text" class="form-control"  required>                                           
                     </div>
                     <div class="form-group">
-                        <label for="precio">Precio</label>
-                        <input id="precio" type="text" class="form-control"  required>  
-                                         
+                        <label for="password">Contraseña</label>
+                        <input id="password" type="text" class="form-control"  required>                                           
                     </div>
                     <div class="form-group">
-                        <label for="cantidad">Cantidad</label>
-                        <input id="cantidad" type="text" class="form-control"  required>  
-                        <input type="hidden"    id="id_insumo">     
-                    </div>
+                        <label for="area">Area</label>
+                        <select name="area" id="area" class="form-control select2" style="width: 100%;"></select>                        
+                    </div>  
+                    <div class="form-group">
+                        <label for="tipo">Tipo de Usuario</label>
+                        <select name="tipo" id="tipouser" class="form-control select2" style="width: 100%;"></select>                        
+                    </div>  
                     
                    
       </div>
@@ -89,7 +90,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
                     </div>
                 </div>
                 <div class="col-md-6">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearinsumos" onClick="limpiarforms()">  Ingresar nuevo insumo </button>                
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearusuarios" onClick="limpiarforms()">  Ingresar nuevo insumo </button>                
                 </div>
             </div>        
         </div>
@@ -101,12 +102,11 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
                             <table class="insumo table table-hover text-nowrap" id="Table">
                                  <thead class='table-success'>
                                         <tr>
-                                        <th scope="col">Codigo de Insumo</th>                                       
-                                        <th scope="col">Nombre Insumo</th>
-                                        <th scope="col">Descripción</th>
-                                        <th scope="col">Precio</th>                                       
-                                        <th scope="col">Existencia</th>
-                                        <th scope="col">Estado</th>                                       
+                                        <th scope="col">Nombre</th>                                       
+                                        <th scope="col">Apellido</th>
+                                        <th scope="col">Username</th>
+                                        <th scope="col">Area</th>                                       
+                                        <th scope="col">Tipo de Usuario</th>
                                         <th scope="col">Actualizar</th>
                                         <th scope="col">Eliminar</th>
                                         </tr>
@@ -136,15 +136,15 @@ else {
 ?>
 <script>
     function cerrar() {
-        $('#crearinsumos').modal('hide');
+        $('#crearusuarios').modal('hide');
     }
     function limpiarforms(){
-      $('#codigo').val('');
-      $('#nominsumo').val('');
-      $('#desinsumo').val('');
-      $('#precio').val('');
-      $('#cantidad').val('');
+        $('#id_usuario').val('');
+      $('#nombreusuario').val('');
+      $('#apellidousuario').val('');
+      $('#username').val('');
+      $('#password').val('');
     }
 </script>
-<script src="../Js/Gestion_Insumo.js"></script>
+<script src="../Js/Gestion_Usuarios.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

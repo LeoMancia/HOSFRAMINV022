@@ -43,10 +43,10 @@ class Area{
     }
 
     // TESTEO DE METODO UPDATE
-    function editar($area, $cargo, $id_editado){
-        $sql = "UPDATE cargo SET area=:area, cargo=:cargo WHERE codigo_crg=:id";
+    function editar($area, $id_editado){
+        $sql = "UPDATE cargo SET area=:area WHERE codigo_crg=:id";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id'=>$id_editado, ':area'=>$area, ':cargo'=>$cargo));
+        $query->execute(array(':id'=>$id_editado, ':area'=>$area));
         echo 'editado';
     }
 }

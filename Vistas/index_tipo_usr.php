@@ -47,7 +47,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
                    
       </div>
       <div class="modal-footer">
-            <button type="submit" class="btn btn-outline-success float-right m-1">Guardar</button>
+            <button type="submit" class="btn btn-outline-success float-right m-1" onClick="setTimeout(cerrar,1000)">Guardar</button>
             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
             </form>
       </div>
@@ -66,7 +66,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
                     </div>
                 </div>
                 <div class="col-md-6">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#creartipous">  Crear Tipo </button>                
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#creartipous" onClick="limpiarforms()">  Crear Tipo </button>                
                 </div>
             </div>        
         </div>
@@ -102,5 +102,15 @@ else {
     header('Location: ../index.php');
 }
 ?>
+<script>
+    function cerrar() {
+        $('#creartipous').modal('hide');
+    }
+    function limpiarforms(){
+        $('#id_editar_tipo').val('');
+      $('#tipo').val('');
+     
+    }
+</script>
 <script src="../Js/Gestion_Tipo.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

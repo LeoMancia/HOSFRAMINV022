@@ -39,8 +39,8 @@ if ($_POST['funcion']=='eliminar_area') {
 if ($_POST['funcion']=='editar_area') {
     $id_editado = $_POST['id_editado'];
     $area = $_POST['area'];
-    $cargo = $_POST['cargo'];    
-    $area_us->editar($area, $cargo, $id_editado);
+     
+    $area_us->editar($area, $id_editado);
 }
 
 /*Notas:
