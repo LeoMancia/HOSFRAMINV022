@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel = "preconnect" href = "https://fonts.gstatic.com">
-<link href = "https://fonts.googleapis.com/css2? family = Poppins: wght @ 700 & display = swap" rel = "hoja de estilo">
+    <link href = "https://fonts.googleapis.com/css2? family = Poppins: wght @ 700 & display = swap" rel = "hoja de estilo">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!--<link rel="stylesheet" type="text/css " href="Css/style.css">-->
     <link rel="stylesheet" type="text/css " href="Css/css/all.min.css">
      <!-- Estilo CSS-->
@@ -40,7 +41,7 @@ else {
             <br/>
             <br/>
             <div class="main">
-                <div class="login-main-text py-3">
+                <div class="login-main-text py-10">
                     <center>
                         <form action="Controlador/loginController.php" method="POST">
                         <div class="input-div name">
