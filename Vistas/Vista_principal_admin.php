@@ -9,9 +9,6 @@ if (!empty($_SESSION['us_tipo'])) {
 ?>
 
 <section>
-</br>
-</br>
-</br>
 </section>
 
 <!--Modal de creacion de nuevo insumo-->
@@ -85,12 +82,41 @@ if (!empty($_SESSION['us_tipo'])) {
 <div class="container">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mt-4">
                     <div class="page-header clearfix">
                         <h2 class="pull-left">Gestion de Insumos</h2>
                     </div>
-                </div>               
-            </div>        
+                </div>    
+                <div class="col-md-6 md-2">
+                <img  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span id="contador" class="contador badge badge-danger"></span>  
+                </img>
+                
+                    <img src="../Img/gestion.png" width="80" height="55" title="Ver peticiones de insumos" class="imagen-carrito nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span id="contador" class="contador badge badge-danger"></span>
+                    </img>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <table class="carro table table-hover text-nowrap">
+                          <thead class="table-success">
+                                 <tr>
+                                    <th>Codigo Prod</th>
+                                    <th>Nombre Prod</th>
+                                    <th>Descripción</th>
+                                    <th>Eliminar</th>                  
+                                </tr>
+                            </thead>
+                        <tbody id="lista">
+                        
+                        </tbody>
+                        </table>
+                        <a href="#" id="procesarPeticion" class="btn btn-primary btn-block">Crear Pedido</a>
+                        <a href="#" id="vaciar-carrito" class="btn btn-danger btn-block">Eliminar Insumos</a>
+                    </div>
+                    <!--Carrito-->
+                </div>           
+            </div>
+    </div>       
+</div> 
         </div>
     </br>
         <div class="container-fluid">
@@ -131,4 +157,5 @@ else {
 }
 ?>
 <script src="../Js/Gestion_Insumo.js"></script>
+<script src="../Js/Carrito.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

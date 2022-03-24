@@ -73,12 +73,13 @@ $(document).ready(function(){
             if (vista=="vpi") {
               Insumos.forEach(insumo => {
                 template=`
-                <tr insumoID="${insumo.id}">
+                <tr insumoID="${insumo.id}" fecha="${insumo.Fecha}" nombreinsumo="${insumo.nombre_insumo}" desinsumo="${insumo.descripcion}" precioinsumo="${insumo.precio}" exisinsumo="${insumo.existencia}" estinsumo="${insumo.estado}" id_insumo="${insumo.id_insumo}">
                     <td>${insumo.id_insumo}</td>
                     <td>${insumo.nombre_insumo}</td>
                     <td>${insumo.descripcion}</td>
-                    <td>${insumo.estado}</td>                    
-                    <td><button class="agregar_peticion btn btn-success btn-lock" title="Agregar a peticion" data-bs-toggle="modal" data-bs-target="#crearpeticion"><i class="fas fa-times-circle"></i></a></td>
+                    <td>${insumo.estado}</td>       
+                    <!--Button agregar(  data-bs-toggle="modal" data-bs-target="#crearpeticion")-->             
+                    <td><button class="agregar_peticion btn btn-success btn-lock" title="Agregar a peticion"></a></td>
                 </tr>
                 $('#Table > tbody').append(rows);
             `;
