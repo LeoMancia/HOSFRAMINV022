@@ -11,7 +11,8 @@
 
     <!--Select 2-->
     <link rel="stylesheet" href="../Css/select2.css" />
-    <!--Select 2-->
+    <!--Carrito Css-->
+    <link rel="stylesheet" href="../Css/main.css" />
     <title>Hello, Admin</title>
   </head>
   <body>

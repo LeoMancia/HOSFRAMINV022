@@ -82,16 +82,14 @@ if (!empty($_SESSION['us_tipo'])) {
 <div class="container">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 mt-4">
+                <div class="col-md-6 mt-3">
                     <div class="page-header clearfix">
                         <h2 class="pull-left">Gestion de Insumos</h2>
                     </div>
                 </div>    
-                <div class="col-md-6 md-2">
+                <div class="col-md-6 mt-3" >
                 <img  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span id="contador" class="contador badge badge-danger"></span>  
-                </img>
-                
+                </img>                
                     <img src="../Img/gestion.png" width="80" height="55" title="Ver peticiones de insumos" class="imagen-carrito nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span id="contador" class="contador badge badge-danger"></span>
                     </img>

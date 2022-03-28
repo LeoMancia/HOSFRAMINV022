@@ -1,0 +1,66 @@
+.carro *{
+        position: relative;
+}
+@media screen and (max-width: 900px){
+    .carro{
+        display: block;
+        width: 250px !important;
+        height:auto;
+    }
+    .carro thead{
+        display: none;
+    }
+    .carro > *, .carro tr, .carro td{
+        display: block;
+    }
+    .carro tbody tr td {
+    padding-left: 45%   !important;
+    }
+    .carro tbody tr td:last-child{
+        margin-bottom: 0;
+    }
+    .carro tbody tr td:before{
+        color: #999;
+        font-weight: unset;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+    .carro tbody tr td{
+        font-size: 14px;
+    }
+
+    .carro tbody tr td:nth-child(1):before{
+        content: "Codigo Prod: ";
+        font-weight: bold;
+        color: black;
+    }
+    .carro tbody tr td:nth-child(2):before{
+        content: "Nombre Prod: ";
+        font-weight: bold;
+        color: black;
+    }
+    .carro tbody tr td:nth-child(3):before{
+        content: "Descripción: ";
+        font-weight: bold;
+        color: black;
+    }
+   
+    .carro tbody tr td:nth-child(4):before{
+        content: "Eliminar: ";
+        font-weight: bold;
+        color: black;
+    }
+}
+
+.imagen-carrito{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+.contador{
+    position:static;
+    top: 5px;
+    left: 0px;
+    color: red;
+}
