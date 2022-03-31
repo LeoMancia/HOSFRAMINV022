@@ -16,11 +16,21 @@ class Usuario{
     }
     
     function rellenar_usuarios(){
-        $sql = "SELECT * FROM usuario JOIN cargo ON us_crg = codigo_crg JOIN tipo_user ON us_tipo = codigo_tipo WHERE nombre_us NOT LIKE '' ORDER BY iduser LIMIT 10";
-        $query = $this->acceso->prepare($sql);
-        $query->execute();
-        $this->objetos=$query->fetchall();
-        return $this->objetos;
+        if (!empty($_POST['consulta'])) {
+            $consulta = $_POST['consulta'];
+            $sql = "SELECT * FROM usuario JOIN cargo ON us_crg = codigo_crg JOIN tipo_user ON us_tipo = codigo_tipo WHERE nombre_us NOT LIKE '' AND username LIKE :consulta OR nombre_us LIKE :consulta ORDER BY iduser LIMIT 10";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':consulta'=>"%$consulta%"));
+            $this->objetos=$query->fetchall();
+            return $this->objetos;
+        } else {
+            $sql = "SELECT * FROM usuario JOIN cargo ON us_crg = codigo_crg JOIN tipo_user ON us_tipo = codigo_tipo WHERE nombre_us NOT LIKE '' ORDER BY iduser LIMIT 10";
+            $query = $this->acceso->prepare($sql);
+            $query->execute();
+            $this->objetos=$query->fetchall();
+            return $this->objetos;
+        }
+        
     }
 
     
@@ -46,37 +56,7 @@ class Usuario{
         }
     }
 
-    function cambiar_foto($id_usuario,$nombre){
-        $sql="SELECT foto FROM usuario WHERE id_usuario=:id";
-        $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id'=>$id_usuario,));
-        $this->objetos = $query->fetchall();
-        
-            $sql="UPDATE usuario SET foto =:nombre WHERE id_usuario=:id";
-            $query=$this->acceso->prepare($sql);
-            $query->execute(array(':id'=>$id_usuario,':nombre'=>$nombre));
-        return $this->objetos;
-    }
-
-    function buscar(){
-        if (!empty($_POST['consulta'])) {
-            $consulta = $_POST['consulta'];
-            $sql = "SELECT * FROM usuario JOIN tipo_us ON us_tipo = id_tipo_us WHERE nombre_us LIKE :consulta";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(':consulta'=>"%$consulta%"));
-            $this->objetos=$query->fetchall();
-            return $this->objetos;
-        } else {
-            
-            $sql = "SELECT * FROM usuario JOIN tipo_us ON us_tipo = id_tipo_us WHERE nombre_us NOT LIKE '' ORDER BY id_usuario LIMIT 25";
-            $query = $this->acceso->prepare($sql);
-            $query->execute();
-            $this->objetos=$query->fetchall();
-            return $this->objetos;
-        }
-        
-    }
-
+    
     */
     //crear un nuevo usuario mediante modal
     function crear($nombre,$apellido,$username,$contrasena,$area,$tipouser){
@@ -96,39 +76,7 @@ class Usuario{
         }
     }
 
-    /*funcion ascender y descender
-    function ascender($pass,$id_ascendido, $id_usuario){
-        $sql = "SELECT id_usuario FROM usuario WHERE id_usuario=:id_usuario AND contrasena_us=:pass";
-        $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id_usuario'=>$id_usuario,':pass'=>$pass));
-        $this->objetos=$query->fetchall();
-        if (!empty($this->objetos)) {
-            $tipo=1;
-            $sql = "UPDATE usuario SET us_tipo=:tipo WHERE id_usuario=:id";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(':id'=>$id_ascendido,':tipo'=>$tipo));
-            echo 'ascendido';
-        }else {
-            echo 'No ascendido';
-        }
-    }
-
-    function descender($pass,$id_descendido, $id_usuario){
-        $sql = "SELECT id_usuario FROM usuario WHERE id_usuario=:id_usuario AND contrasena_us=:pass";
-        $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id_usuario'=>$id_usuario,':pass'=>$pass));
-        $this->objetos=$query->fetchall();
-        if (!empty($this->objetos)) {
-            $tipo=2;
-            $sql = "UPDATE usuario SET us_tipo=:tipo WHERE id_usuario=:id";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(':id'=>$id_descendido,':tipo'=>$tipo));
-            echo 'descendido';
-        }else {
-            echo 'No descendido';
-        }
-    }
-*/
+   
 function eliminar_usuario($id){
     $sql = "DELETE FROM usuario WHERE iduser=:id";
     $query = $this->acceso->prepare($sql);

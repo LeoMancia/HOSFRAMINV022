@@ -11,73 +11,7 @@ if (!empty($_SESSION['us_tipo'])) {
 <section>
 </section>
 
-<!--Modal de creacion de nuevo insumo-->
- <!-- Modal -->
- <div class="modal fade" id="crearpeticion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Creacion de Peticion de Insumos</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-        </button>        
-      </div>
-      <!--Apartado para ingresar los datos de un nuevo tipo de usuario-->
-      <div class="modal-body">
-            <!--Mensaje de Alerta success-->
-            <div class="alert alert-success text-center" id="add" style='display:none;'>
-                  <span><i class="fas fa-check m-1"></i>Se creó exitosamente!</span>
-              </div>              
-              <!--Mensaje de Alerta error-->
-              <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
-                    <span><i class="fas fa-times m-1"></i>¡Error!, ¡No se pudo completar la peticion!</span>
-              </div>    
-                 <div class="text-center">
-                    <img src="../Img/logo.png" class="rounded-circle" alt="Cinque Terre" width="204" height="136">
-              </div>
-              <form id="form-crear">
-                    <input type="hidden"    id="vist" value="vpi">            
-                    <div class="form-group">
-                        <label for="tipo">Tipo de Usuario</label>
-                        <input id="tipo" type="text" class="form-control" placeholder="Ingresar tipo de usuario" required>  
-                        <input type="hidden"    id="id_editar_tipo">                      
-                    </div>
-                    <div class="form-group">
-                        <label for="tipo">Tipo de Usuario</label>
-                        <input id="tipo" type="text" class="form-control" placeholder="Ingresar tipo de usuario" required>  
-                        <input type="hidden"    id="id_editar_tipo">                      
-                    </div>
-                    <div class="form-group">
-                        <label for="tipo">Tipo de Usuario</label>
-                        <input id="tipo" type="text" class="form-control" placeholder="Ingresar tipo de usuario" required>  
-                        <input type="hidden"    id="id_editar_tipo">                      
-                    </div>
-                    <div class="form-group">
-                        <label for="tipo">Tipo de Usuario</label>
-                        <input id="tipo" type="text" class="form-control" placeholder="Ingresar tipo de usuario" required>  
-                        <input type="hidden"    id="id_editar_tipo">                      
-                    </div>
-                    <div class="form-group">
-                        <label for="tipo">Tipo de Usuario</label>
-                        <input id="tipo" type="text" class="form-control" placeholder="Ingresar tipo de usuario" required>  
-                        <input type="hidden"    id="id_editar_tipo">                      
-                    </div>
-                    <div class="form-group">
-                        <label for="tipo">Tipo de Usuario</label>
-                        <input id="tipo" type="text" class="form-control" placeholder="Ingresar tipo de usuario" required>  
-                        <input type="hidden"    id="id_editar_tipo">                      
-                    </div>
-                   
-      </div>
-      <div class="modal-footer">
-            <button type="submit" class="btn btn-outline-success float-right m-1">Guardar</button>
-            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
-            </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!--Fin Modal-->
-
+<input type="hidden" id="vist" value="vpi">
 <!--Formulario de creacion de Tipos-->
 <div class="container">
         <div class="container-fluid">
@@ -119,6 +53,22 @@ if (!empty($_SESSION['us_tipo'])) {
     </br>
         <div class="container-fluid">
             <div class="row">
+                <!--Cuadro de Busqueda-->
+                <div class="card card-success">
+                <div class="card-header Titulo">
+                    <h3 class="card-title">Buscar Insumos</h3>
+                    <div class="input-group">
+                        <input type="text" id="buscar-insumo" class="form-control float-left" placeholder="Ingresar codigo del insumo a buscar">
+                        <div class="input-group-append">
+                            <button class="btn btn btn-success"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                <div id="insumos" class="row d-flex aling-items-strech"></div>
+                </div>
+            </div>
+                <!--Fin de cuadro de busqueda-->
                 <div class="col-md-12">
                     <div class="table-responsive-sm">
                             <table class="insumo table table-hover text-nowrap" id="Table">
@@ -135,8 +85,7 @@ if (!empty($_SESSION['us_tipo'])) {
                                     
                                 </tbody>
                          </table>
-                    </div>
-                   
+                    </div>                   
                 </div>
 
             </div>

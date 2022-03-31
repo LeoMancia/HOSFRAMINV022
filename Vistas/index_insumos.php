@@ -10,8 +10,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
 
 <section>
 </br>
-</br>
-</br>
+
 </section>
 
 <!--Modal de creacion de nuevo insumo-->
@@ -80,7 +79,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
 <!--Fin Modal-->
 
 <!--Formulario de creacion de Tipos-->
-<div class="container">
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
@@ -91,14 +90,32 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
                 <div class="col-md-6">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearinsumos" onClick="limpiarforms()">  Ingresar nuevo insumo </button>                
                 </div>
-            </div>        
+            </div>     
+            <div class="row">
+                <!--Cuadro de Busqueda-->
+                <div class="card card-success">
+                <div class="card-header Titulo">
+                    <h3 class="card-title">Buscar Insumos</h3>
+                    <div class="input-group">
+                        <input type="text" id="buscar-insumo" class="form-control float-left" placeholder="Ingresar codigo del insumo a buscar">
+                        <div class="input-group-append">
+                            <button class="btn btn btn-success"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                <div id="insumos" class="row d-flex aling-items-strech"></div>
+                </div>
+            </div>
+                <!--Fin de cuadro de busqueda-->
+            </div>   
         </div>
     </br>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive-sm">
-                            <table class="insumo table table-hover text-nowrap" id="Table">
+                            <table class="insumo table table-hover text-nowrap display" id="Table">
                                  <thead class='table-success'>
                                         <tr>
                                         <th scope="col">Codigo de Insumo</th>                                       
@@ -121,7 +138,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
 
             </div>
         </div>
-</div>
+
 
   
 

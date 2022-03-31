@@ -21,11 +21,22 @@ class Insumo{
     //Obtener datos de la base de datos funcionando al 100%
 
     function rellenar_insumos(){
+       if (!empty($_POST['consulta'])) {
+        $consulta = $_POST['consulta'];
+        $sql = "SELECT * FROM insumos WHERE id_insumo LIKE :consulta OR nombre_ism LIKE :consulta ORDER BY id_insumo ASC LIMIT 50";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':consulta'=>"%$consulta%"));
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+
+       } else {
         $sql = "SELECT * FROM insumos ORDER BY id_insumo ASC";
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchall();
         return $this->objetos;
+       }
+       
 
     }
 

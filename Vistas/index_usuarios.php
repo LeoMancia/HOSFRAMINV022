@@ -86,13 +86,31 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
             <div class="row">
                 <div class="col-md-6">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left">Gestion de Insumos</h2>
+                        <h2 class="pull-left">Gestion de Usuarios</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearusuarios" onClick="limpiarforms()">  Ingresar nuevo insumo </button>                
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearusuarios" onClick="limpiarforms()">  Ingresar nuevo usuario </button>                
                 </div>
-            </div>        
+            </div>     
+            <div class="row">
+                <!--Cuadro de Busqueda-->
+                <div class="card card-success">
+                <div class="card-header Titulo">
+                    <h3 class="card-title">Buscar Usuarios</h3>
+                    <div class="input-group">
+                        <input type="text" id="buscar-usuario" class="form-control float-left" placeholder="Ingresar Username del usuario a buscar">
+                        <div class="input-group-append">
+                            <button class="btn btn btn-success"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                <div id="usuarios" class="row d-flex aling-items-strech"></div>
+                </div>
+            </div>
+                <!--Fin de cuadro de busqueda-->
+            </div>      
         </div>
     </br>
         <div class="container-fluid">

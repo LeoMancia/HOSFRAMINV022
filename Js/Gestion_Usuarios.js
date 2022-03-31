@@ -90,9 +90,9 @@ function tipos() {
 
 
   //TESTEO Obtener datos FUNCIONANDO PARA Usuarios
-  function rellenar_usuario() {
+  function rellenar_usuario(consulta) {
       funcion="rellenar_usuario";
-      $.post('../Controlador/usuarioController.php',{funcion},(response)=>{
+      $.post('../Controlador/usuarioController.php',{consulta,funcion},(response)=>{
           const Usuarios = JSON.parse(response);            
           let template='';
           $('#Table > tbody').empty();
@@ -193,5 +193,17 @@ function tipos() {
       console.log(id,nombre,apellido,username,password,area,tipo, edit);
   })
 
+
+   //Bloque de codigo que captura lo que se escribe en el teclado
+  //y lo manda a la funcion que hace metodo Get de la tabla usuarios
+    $(document).on('keyup','#buscar-usuario',function(){
+      let valor = $(this).val();
+      if (valor !="") {
+        rellenar_usuario(valor);
+          console.log(valor)
+      } else {
+        rellenar_usuario();
+      }
+  }); 
 });
 

@@ -50,7 +50,7 @@
             <a class="nav-link active" aria-current="page" href="../Vistas/index_usuarios.php">Usuarios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Usuarios</a>
+            <a class="nav-link active" aria-current="page" href="../Vistas/peticiones.php">Peticiones de Insumos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="../Controlador/logout.php">Cerrar Sesion</a>

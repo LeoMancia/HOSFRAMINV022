@@ -63,10 +63,11 @@ $(document).ready(function(){
 
 
     //TESTEO Obtener datos FUNCIONANDO PARA INSUMOS
-    function rellenar_insumos() {
+    function rellenar_insumos(consulta) {
         funcion="rellenar_insumo";
-        $.post('../Controlador/insumoController.php',{funcion},(response)=>{
-            const Insumos = JSON.parse(response);            
+        $.post('../Controlador/insumoController.php',{consulta,funcion},(response)=>{
+            const Insumos = JSON.parse(response);    
+            console.log(consulta);        
             let template='';
             $('#Table > tbody').empty();
             //Verificar la ubicacion del usuario para mostrar un tipo especifico de HTML de Insumos
@@ -183,6 +184,19 @@ $(document).ready(function(){
         edit=true;
         console.log(id,nombreinsumo,desinsumo,precio,cantidad,estado,codigo,fecha);
     })
+
+    //bloque de codigo que captura lo que se escribe en el teclado
+    //y lo manda a la funcion rellenar _insumos
+    $(document).on('keyup','#buscar-insumo',function(){
+      let valor = $(this).val();
+      if (valor !="") {
+        rellenar_insumos(valor);
+          console.log(valor)
+      } else {
+        rellenar_insumos();
+      }
+  }); 
+  
 
 });
 

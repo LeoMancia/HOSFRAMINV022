@@ -140,5 +140,24 @@ $(document).ready(function(){
         })
         $('#contador').html(contador);
        }
+
+
+
+       //Testeo de funcion para generar codigos aleatorios para id de insumos
+       var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+       var serial='';
+       function getARandomOneInRange() {
+         return possible.charAt(Math.floor(Math.random() * possible.length));
+       }
+     
+       function getRandomFour() {
+         return getARandomOneInRange() + getARandomOneInRange() + getARandomOneInRange() ;
+       }
+     
+       $('#btnSerial').click(function() {
+         var serial = `${getRandomFour()}-${getRandomFour()}-${getRandomFour()}-${getRandomFour()}`;
+         $('#txtSerial').val(serial);
+       });
+        console.log(serial);
     
 })
