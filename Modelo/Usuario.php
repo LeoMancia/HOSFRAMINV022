@@ -7,7 +7,7 @@ class Usuario{
         $this->acceso = $db->pdo;
     }
     function Loguearse($user, $pass){
-        $sql="SELECT * FROM usuario inner join tipo_user on us_tipo=codigo_tipo where username=:user and pasword=:pass";
+        $sql="SELECT * FROM usuario inner join tipo_user on us_tipo=codigo_tipo inner join cargo ON us_crg = codigo_crg where username=:user and pasword=:pass";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':user'=>$user, ':pass'=>$pass));
         $this->objetos = $query->fetchall();

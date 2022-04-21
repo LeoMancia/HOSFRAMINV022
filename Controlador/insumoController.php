@@ -3,7 +3,7 @@ include_once '../Modelo/Insumo.php';
 $insumo = new Insumo();
 session_start();
 
-//Metodo crear Insumo de usuario al 0
+//Metodo crear Insumo de usuario al 100
 if ($_POST['funcion']=='crear_insumo') {
     $codigo = $_POST['codigo'];
     $nominsumo = $_POST['nominsumo'];
@@ -30,7 +30,8 @@ if ($_POST['funcion']=='rellenar_insumo') {
             'existencia'=>$objeto->existencia,
             'Fecha'=>$objeto->fecha,
             'estado'=>$objeto->estado,
-            'id_insumo'=>$objeto->id_insumo            
+            'id_insumo'=>$objeto->id_insumo 
+                      
         );
     }
     $jsonstring=json_encode($json);

@@ -41,7 +41,7 @@ if (!empty($_SESSION['us_tipo'])) {
                         
                         </tbody>
                         </table>
-                        <a href="#" id="procesarPeticion" class="btn btn-primary btn-block">Crear Pedido</a>
+                        <a href="#" id="procesarPedido" class="btn btn-primary btn-block">Crear Pedido</a>
                         <a href="#" id="vaciar-carrito" class="btn btn-danger btn-block">Eliminar Insumos</a>
                     </div>
                     <!--Carrito-->

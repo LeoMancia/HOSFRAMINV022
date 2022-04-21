@@ -28,7 +28,8 @@ if(!empty($usuario->objetos)){
     foreach($usuario->objetos as $objeto){
         $_SESSION['usuario']=$objeto->iduser;
         $_SESSION['us_tipo']=$objeto->us_tipo;        
-        $_SESSION['nombre']=$objeto->nombre_us;        
+        $_SESSION['nombre']=$objeto->nombre_us; 
+        $_SESSION['area']=$objeto->area; 
     }
     
     switch ($_SESSION['us_tipo']) {

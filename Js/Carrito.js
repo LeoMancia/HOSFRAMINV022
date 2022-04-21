@@ -1,7 +1,8 @@
 $(document).ready(function(){
     Contar_productos();
-    
+    RecuperarLS_carrito_compra();
     RecuperarLS_carrito();
+    
     $(document).on('click','.agregar_peticion',(e)=>{
         const elemento= $(this)[0].activeElement.parentElement.parentElement;
         const id=$(elemento).attr('insumoID');
@@ -12,17 +13,23 @@ $(document).ready(function(){
         const estado=$(elemento).attr('estinsumo');
         const codigo=$(elemento).attr('id_insumo');
         const fecha=$(elemento).attr('fecha');     
-        
+        const stock=$(elemento).attr('prodcant');     
+        console.log(stock);
         edit=true;
 
         const insumos={
+            
             id: id,
             nombre: nombreinsumo,
             descripcion: desinsumo,
             codigo_prod:codigo,
-            cantidad:1
-        
+            cantidad:1,
+            precio: precio,
+            fecha:fecha,
+            estado:estado,
+            stock:stock                 
         }
+        
         let id_insumo;
         let INSUMO;
         INSUMO = RecuperarLS();
@@ -52,10 +59,7 @@ $(document).ready(function(){
             let contador;
             Contar_productos();
             
-            
-            
         }
-
     })
 
     $(document).on('click','.borrar-ins',(e)=>{
@@ -68,8 +72,7 @@ $(document).ready(function(){
     })
 
     $(document).on('click','#vaciar-carrito ',(e)=>{
-       $('#lista').empty();    
-       
+       $('#lista').empty();     
        EliminarLS();
        Contar_productos();
        
@@ -109,7 +112,6 @@ $(document).ready(function(){
         </tr>
     `;
         $('#lista').append(template);
-        AgregarLS(insumos);
         });
     }
 
@@ -117,6 +119,7 @@ $(document).ready(function(){
     function EliminarLS() {
         localStorage.clear();
     }
+
 
     //Elimina productos individuales del Local Storage
     function Eliminar_producto_LS(id) {
@@ -141,9 +144,77 @@ $(document).ready(function(){
         $('#contador').html(contador);
        }
 
+   //Funciones Js para el procesamiento de pedidos de insumos
+   //Almacena id de pedido en ls********************************************//
+  $(document).on('click', '#procesarPedido',(e=>{
+    Procesar_Pedido();    
+    prueba = Procesar_Pedido();
+    console.log(prueba)
+    
+  }))
+
+    
+    //Bloque de codigo que verifica si hay un id en ls 
+    function RecuperarLSPeticion() {
+        let Peticion;
+        if (localStorage.getItem('Peticion')===null) {
+            Peticion=[];
+        }else{
+            Peticion= JSON.parse(localStorage.getItem('Peticion'))
+        }
+        return Peticion
+    }
+
+    //Bloque de codido que agrega al ls el id de la peticion
+    function AgregarLSPeticion(idpeticion){
+        let Peticion;
+        Peticion = RecuperarLSPeticion();
+        Peticion.push(idpeticion);
+        localStorage.setItem('Peticion', JSON.stringify(idpeticion))
+    }
+ 
+ 
+   //Elimina el contenido del ls donde se almacena el id de la peticion************
+    $(document).on('click','.añadir',(e)=>{
+        //EliminarLSPeticion();
+    })
+
+    function EliminarLSPeticion() {
+        localStorage.removeItem('Peticion');
+    }
+    //Fin de codigo de eliminacion *******************************
 
 
-       //Testeo de funcion para generar codigos aleatorios para id de insumos
+    //Codigo pa procesar el pedido
+        function Procesar_Pedido() {
+            let productos;
+            productos= RecuperarLS();
+            idPeticion= RecuperarLSPeticion();
+            if (productos.length === 0 ) {
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: '¡No ha agregado insumos a la petición aun!',
+                 footer: '<a>Petición de insumos</a>'
+             })
+            }
+            else{
+                if (idPeticion.length === 0) {
+                     //Genera un codigo por peticion
+                    const serialid=serialnumberpet();
+                    const idpeticion={            
+                        IDpeticion:serialid             
+                    }
+                    AgregarLSPeticion(idpeticion);                    
+                    location.href = '../Vistas/peticiones.php';
+                } else {
+                    location.href = '../Vistas/peticiones.php';
+                }
+            }
+        }
+
+     function serialnumberpet(){
+        //Testeo de funcion para generar codigos aleatorios para id de insumos
        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
        var serial='';
        function getARandomOneInRange() {
@@ -153,11 +224,53 @@ $(document).ready(function(){
        function getRandomFour() {
          return getARandomOneInRange() + getARandomOneInRange() + getARandomOneInRange() ;
        }
-     
-       $('#btnSerial').click(function() {
-         var serial = `${getRandomFour()}-${getRandomFour()}-${getRandomFour()}-${getRandomFour()}`;
-         $('#txtSerial').val(serial);
-       });
-        console.log(serial);
-    
+        var serial = `${getRandomFour()}-${getRandomFour()}-${getRandomFour()}-${getRandomFour()}`;
+        return serial;
+     }
+        //LLENA TABLA DE INSUMOS A PEDIR
+        function RecuperarLS_carrito_compra() {
+            //Obtener fecha para ingreso de peticiones
+            let date = new Date();
+            let fecha = date.toISOString().split('T')[0];
+            //codigo que obtiene el dato del area del usuario
+            let area = $('#unidad').val();            
+            let Serialid;
+            Serialid =RecuperarLSPeticion();
+            console.log(Serialid);
+            let insumos;
+            insumos = RecuperarLS();
+            insumos.forEach(insumo => {
+                template=`
+                <tr prodID="${insumo.id}">
+                    <td>${insumo.id}</td>
+                    <td>${insumo.nombre}</td>
+                    <td>${area}</td>
+                    <td>${fecha}</td>
+                   <td>
+                        <input type="number" min="1" class="form-control cantidad_producto" value="${insumo.cantidad}">
+                    </td>      
+                         
+                    <td><button class="borrar-producto btn btn-danger btn-lock"><i class="fas fa-times-circle"></i></a></td>
+                </tr>
+            `;
+            $('#lista-compra').append(template);
+               
+            });
+            }
+
+            $('#cp').keyup((e)=>{
+                let cantidad,insumo,Insumos,montos;
+                insumo = $(this)[0].activeElement.parentElement.parentElement;
+                id = $(insumo).attr('prodID');
+                cantidad = insumo.querySelector('input').value;
+                Insumos = RecuperarLS();
+                Insumos.forEach(function(prod, indice) {
+                    if (prod.id === id) {
+                        prod.cantidad = cantidad;
+                        console.log(cantidad)
+                    }
+                });
+                localStorage.setItem('Insumos', JSON.stringify(Insumos))
+                
+            })
 })
