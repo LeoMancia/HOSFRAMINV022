@@ -62,6 +62,25 @@ if ($_POST['funcion']=='editar_insumo') {
 
 }
 
+if ($_POST['funcion']=='verificar_stock') {
+   $error=0;
+   $insumos= json_decode($_POST['insumos']);
+   foreach ($insumos as $objeto) {
+      $insumo->obtener_stock($objeto->id);      
+      foreach ($insumo->objetos as $obj) {
+          $total=$obj->total;
+      }
+      if ($total>=$objeto->cantidad && $objeto->cantidad>0) {
+          $error=$error+0;
+      } else {
+        $error=$error+1;
+      }
+      
+   }
+   echo $error;
+}
+
+
 /*Notas:
 - $tipo_us = new Tipo(); = Es la instancia del modelo Tipo.php donde se hace la peticion INSERT en la BD
 - $_POST['funcion']=='crear_tipo' = Se obtiene mediante el archivo Gestion_Tipo.js donde se obtienen los atributos de la funcion y que tipo de funcion será "CRUD"

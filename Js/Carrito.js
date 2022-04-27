@@ -14,7 +14,6 @@ $(document).ready(function(){
         const codigo=$(elemento).attr('id_insumo');
         const fecha=$(elemento).attr('fecha');     
         const stock=$(elemento).attr('prodcant');     
-        console.log(stock);
         edit=true;
 
         const insumos={
@@ -150,8 +149,11 @@ $(document).ready(function(){
     Procesar_Pedido();    
     prueba = Procesar_Pedido();
     console.log(prueba)
-    
-  }))
+}))
+
+    $(document).on('click', '#procesar-peticion-final',(e=>{
+        Procesar_Peticion_Final();
+    }))
 
     
     //Bloque de codigo que verifica si hay un id en ls 
@@ -236,7 +238,7 @@ $(document).ready(function(){
             let area = $('#unidad').val();            
             let Serialid;
             Serialid =RecuperarLSPeticion();
-            console.log(Serialid);
+            //console.log(Serialid);
             let insumos;
             insumos = RecuperarLS();
             insumos.forEach(insumo => {
@@ -258,6 +260,7 @@ $(document).ready(function(){
             });
             }
 
+            //obtiene la cantidad de insumos requeridos por el personal
             $('#cp').keyup((e)=>{
                 let cantidad,insumo,Insumos,montos;
                 insumo = $(this)[0].activeElement.parentElement.parentElement;
@@ -267,10 +270,81 @@ $(document).ready(function(){
                 Insumos.forEach(function(prod, indice) {
                     if (prod.id === id) {
                         prod.cantidad = cantidad;
-                        console.log(cantidad)
                     }
                 });
                 localStorage.setItem('Insumos', JSON.stringify(Insumos))
                 
             })
+
+
+            //codigo que borra el producto en la vista final de la peticion
+            $(document).on('click','.borrar-producto',(e)=>{
+                const elemento = $(this)[0].activeElement.parentElement.parentElement;
+                const id = $(elemento).attr('prodID');
+                elemento.remove();       
+                Eliminar_producto_LS(id)
+            })
+
+            //Finaliza la peticion para almacenarla
+            function Procesar_Peticion_Final(){
+                //Validacion que se encarga de ver si hay insumos en el Local Storage
+                if (RecuperarLS().length == 0) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: '¡No ha agregado insumos a la petición aun!',
+                        footer: '<a>Petición de insumos</a>'
+                    }).then(function(){
+                        location.href = '../Vistas/Vista_principal_admin.php'
+                    })
+                } else {
+                    Verificar_Stock().then(error=>{
+                        console.log(error)
+                        if (error==0) {
+                            Swal.fire({
+                                position: 'center', 
+                                icon: 'success',
+                                title: 'La peticion ha sido creada',
+                                showConfirmButton: false,
+                                timer: 1500
+                              })
+                        } else {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                title: 'Algun insumo no se tiene la cantidad requerida',
+                                showConfirmButton: false,
+                                timer: 1700
+                              })
+                        }
+                    });
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'La peticion ha sido creada',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                      
+                }
+
+            }
+
+    async function Verificar_Stock() {
+        let insumos;
+        funcion='verificar_stock';
+        insumos = RecuperarLS();
+        console.log(insumos)
+        const response = await fetch('../Controlador/insumoController.php',{
+            method:'POST',
+            headers:{'Content-Type':'application/x-www-form-urlencoded'},
+            body:'funcion='+funcion+'&&insumos='+JSON.stringify(insumos)
+        })
+        //console.log(response)
+        let error = await response.text();
+        return error;
+        
+    }                        
+
+            
 })

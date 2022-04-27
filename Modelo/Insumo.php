@@ -60,5 +60,13 @@ class Insumo{
         $query->execute(array(':nominsumo'=>$nominsumo,':desinsumo'=>$desinsumo,':precio'=>$precio,':cantidad'=>$cantidad,':fecha'=>$fecha,':estado'=>$estado,':codigo'=>$codigo, ':id_editado'=>$id_editado));
         echo 'editado';
     }
+
+    function obtener_stock($id){
+        $sql = "SELECT SUM(existencia) as total FROM insumos WHERE codigo_ism=:id";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$id));
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
 }
 ?>

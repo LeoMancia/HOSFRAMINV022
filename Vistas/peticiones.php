@@ -60,7 +60,7 @@ if (!empty($_SESSION['us_tipo'])) {
                                 <a href="../Vistas/Vista_principal_admin.php" class="añadir btn btn-primary btn-block">Añadir mas insumos</a>
                             </div>
                             <div class="col-xs-12 col-md-4">
-                                <a href="#" class="btn btn-success btn-block" id="procesar-compra">Realizar petición</a>
+                                <a href="#" class="btn btn-success btn-block" id="procesar-peticion-final">Realizar petición</a>
                             </div>
                         </div>
                     </div>
