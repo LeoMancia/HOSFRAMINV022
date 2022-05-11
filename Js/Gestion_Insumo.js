@@ -78,7 +78,7 @@ $(document).ready(function(){
                     <td>${insumo.id_insumo}</td>
                     <td>${insumo.nombre_insumo}</td>
                     <td>${insumo.descripcion}</td>
-                    <td>${insumo.estado}</td>       
+                    <td>${insumo.existencia}</td>       
                     <!--Button agregar(  data-bs-toggle="modal" data-bs-target="#crearpeticion")-->             
                     <td><button class="agregar_peticion btn btn-success btn-lock" title="Agregar a peticion"></a></td>
                 </tr>

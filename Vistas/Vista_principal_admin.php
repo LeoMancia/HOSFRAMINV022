@@ -77,7 +77,7 @@ if (!empty($_SESSION['us_tipo'])) {
                                         <th scope="col">Codigo de Insumo</th>                                       
                                         <th scope="col">Nombre Insumo</th>
                                         <th scope="col">Descripción</th>
-                                        <th scope="col">Estado</th>                                       
+                                        <th scope="col">Existencia</th>                                       
                                         <th scope="col">Crear Petición</th>
                                         </tr>
                                 </thead>

@@ -299,8 +299,9 @@ $(document).ready(function(){
                     })
                 } else {
                     Verificar_Stock().then(error=>{
-                        console.log(error)
-                        if (error==0) {
+                        //console.log(error)
+                        if (error==="") {
+                            Registrar_peticion();
                             Swal.fire({
                                 position: 'center', 
                                 icon: 'success',
@@ -308,13 +309,15 @@ $(document).ready(function(){
                                 showConfirmButton: false,
                                 timer: 1500
                               })
+                              EliminarLS();                              
+                             
                         } else {
                             Swal.fire({
                                 position: 'center',
                                 icon: 'error',
-                                title: 'Algun insumo no se tiene la cantidad requerida',
+                                title: 'El insumo: '+ error + ' no cuenta con la cantidad requerida',
                                 showConfirmButton: false,
-                                timer: 1700
+                                timer: 1800
                               })
                         }
                     });
@@ -323,9 +326,8 @@ $(document).ready(function(){
                         icon: 'success',
                         title: 'La peticion ha sido creada',
                         showConfirmButton: false,
-                        timer: 1500
-                      })
-                      
+                        timer: 2500
+                      });                    
                 }
 
             }
@@ -334,7 +336,7 @@ $(document).ready(function(){
         let insumos;
         funcion='verificar_stock';
         insumos = RecuperarLS();
-        console.log(insumos)
+        //console.log(insumos)
         const response = await fetch('../Controlador/insumoController.php',{
             method:'POST',
             headers:{'Content-Type':'application/x-www-form-urlencoded'},
@@ -343,8 +345,44 @@ $(document).ready(function(){
         //console.log(response)
         let error = await response.text();
         return error;
+       
         
     }                        
 
-            
+    function Registrar_peticion(){
+        funcion = 'registrar_peticion';
+        let insumos = RecuperarLS();
+        let json = JSON.stringify(insumos)
+        let idpeticion2 = RecuperarLSPeticion();
+        let idpeticion = idpeticion2.IDpeticion
+        //console.log(idpeticion);
+        insumos.forEach(objeto => {
+            let idpeticiones = idpeticion;
+            let nombre = objeto.nombre;
+            let descripcion =objeto.descripcion;
+            let cant_solici = objeto.cantidad;
+            let id = objeto.id;
+            let cod_producto = objeto.codigo_prod;
+            $.post('../Controlador/peticionController.php',{funcion,json,idpeticiones,nombre,descripcion,cant_solici,cod_producto,id}, (response)=>{
+                setTimeout(function(){
+                   Swal.fire({
+                        title: 'Su codigo de peticion es: '+ '</br>'+ response,
+                        showClass: {
+                          popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                          popup: 'animate__animated animate__fadeOutUp'
+                        }
+                      })
+                }, 1500);
+                setTimeout(function(){
+                    location.href = '../Vistas/Vista_principal_admin.php'
+                }, 7500);
+              
+            })
+           
+        });
+        
+       
+    }            
 })

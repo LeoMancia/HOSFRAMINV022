@@ -62,11 +62,24 @@ class Insumo{
     }
 
     function obtener_stock($id){
-        $sql = "SELECT SUM(existencia) as total FROM insumos WHERE codigo_ism=:id";
+
+        //Sentencia que verifica el total del insumo
+        /*
+        $sql = "SELECT SUM(existencia) as total, nombre_ism as Nombre FROM insumos WHERE codigo_ism=:id";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id'=>$id));
         $this->objetos = $query->fetchall();
         return $this->objetos;
+        */
+
+        //nueva sentencia para obtener el nombre y total de la existencia
+        $sql = "SELECT SUM(existencia) as total, (SELECT nombre_ism from insumos WHERE codigo_ism=:id) as nombre FROM insumos WHERE codigo_ism=:id";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$id));
+        $this->objetos = $query->fetchall();
+        
     }
+
+    
 }
 ?>

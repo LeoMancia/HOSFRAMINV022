@@ -62,22 +62,29 @@ if ($_POST['funcion']=='editar_insumo') {
 
 }
 
+//Metodo de verificacion de stock
 if ($_POST['funcion']=='verificar_stock') {
-   $error=0;
+    //$error=0;
+   $error="";
+  
    $insumos= json_decode($_POST['insumos']);
    foreach ($insumos as $objeto) {
       $insumo->obtener_stock($objeto->id);      
       foreach ($insumo->objetos as $obj) {
           $total=$obj->total;
+          $nombre = $obj->nombre;
+         
       }
       if ($total>=$objeto->cantidad && $objeto->cantidad>0) {
-          $error=$error+0;
+        $error= "";
       } else {
-        $error=$error+1;
+         $error= $nombre;
+         break;
       }
-      
-   }
-   echo $error;
+   }  
+   print_r ($error);
+   
+   
 }
 
 
