@@ -21,7 +21,7 @@ if ($_POST['funcion']=='registrar_peticion') {
     $fecha1 = new DateTime();
     $estampadetiempo = $fecha1->getTimestamp();
     $idunicopeticion = $iduser + $estampadetiempo;
-    $peticion->Crear($fecha,$area,$idpeticiones,$nombre,$descripcion,$cant_solici,$cod_producto,$idunicopeticion);
+    $peticion->Crear($fecha,$area,$idpeticiones,$nombre,$descripcion,$cant_solici,$cod_producto,$idunicopeticion,$iduser);
 
    
     //Prueba de disminucion de stock o existencia
@@ -30,34 +30,32 @@ if ($_POST['funcion']=='registrar_peticion') {
         $id_peticion = $objeto->ultima_peticion;
         echo $id_peticion;
     }
-
     $peticion->actualizar_stock($cant_solici,$id);
-//HASTA AQUI funciona
-/*
-    try {
-        $db= new Conexion();
-        $conexion = $db->pdo;
-        $conexion->beginTransaction();
-        foreach ($insumos as $prod) {
-            $cantidad = $prod->cantidad;
-            //echo $cantidad;
-            while ($cantidad !=0) {
-                $sql = "SELECT * FROM insumos WHERE id_insumo=:id";
-                $query = $conexion->prepare($sql);
-                $query->execute(array(':id'=>$prod->codigo_prod));
-                $ismpeticion= $query->fetchall();
-                print_r ($ismpeticion);
-                foreach ($ismpeticion as $peticiones) {
-                   echo ("contando");
-                }
-            }
-        }
-    } catch (Exception $error) {
-        $conexion->rollBack();
-        //echo $error->getMessage();
-    }
-    */
 } 
 
+//Metodo get para obtener las peticiones de la base de datos
+if ($_POST['funcion']=='obtener_peticiones') {
+    $peticion->obtener_peticiones($iduser);
+    $json = array();
+    foreach ($peticion->objetos as $objeto ) {
+        $json[]=array(
+            'CodigoPeticion'=>$objeto->codigo_vle,
+            'CodigoInsumo'=>$objeto->codigo_ism,
+            'NombreProd'=>$objeto->nom_prod,
+            'AreaPeticion'=>$objeto->area_peticion,
+            'cantSolicitada'=>$objeto->cant_solicitada,
+            'Fecha'=>$objeto->fecha_peticion,
+            'IDPeticion'=>$objeto->id_usr
+        );
+    }
+    $jsonstring = json_encode($json);
+    echo ($jsonstring);
+}
+
+//Recibe los datos de la peticion a cambiar su estado
+if ($_POST['funcion']=='cambiar_estado') {
+    $id_editado = $_POST['Id'];
+    $peticion->cambiar_estado($id_editado);    
+}
 
 ?>

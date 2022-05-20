@@ -244,7 +244,7 @@ $(document).ready(function(){
             insumos.forEach(insumo => {
                 template=`
                 <tr prodID="${insumo.id}">
-                    <td>${insumo.id}</td>
+                    <td>${insumo.codigo_prod}</td>
                     <td>${insumo.nombre}</td>
                     <td>${area}</td>
                     <td>${fecha}</td>

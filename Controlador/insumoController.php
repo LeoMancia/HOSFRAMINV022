@@ -39,7 +39,7 @@ if ($_POST['funcion']=='rellenar_insumo') {
 }
 
 //TESTEO DE METODO DELETE
-//FUNCIONAL AL 0%
+//FUNCIONAL AL 100%
 if ($_POST['funcion']=='eliminar_insumo') {
     $id=$_POST['id'];
     $insumo->eliminar_insumo($id);

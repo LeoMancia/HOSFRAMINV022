@@ -7,11 +7,8 @@ if (!empty($_SESSION['us_tipo'])) {
 <?php 
     include_once 'layout/navbar.php';
 ?>
-<!-- Boton y text-box para  probar el generador
-<button id="btnSerial">Generar codigo</button>
-<label>Codigo:</label>
-<input id="txtSerial" type="text" />
--->
+
+<input type="hidden" id="rol" value="<?php echo $_SESSION['us_tipo']?>">
 
 <link rel="stylesheet" href="../Css/pedidos.css">
 <section>
@@ -28,26 +25,25 @@ if (!empty($_SESSION['us_tipo'])) {
                                 <img src="../img/logo.png" width="100" height="100">
                             </div>
                             <h1 class="titulo_cp">SOLICITUD DE INSUMOS</h1>
-                            <div class="datos_cp">
-                                <div class="form-group row">
-                                    <span>Unidad Solicitante: </span>
-                                    <div class="input-group-append col-md-4">
-                                        <input type="text" class="form-control" id="unidad" placeholder="Ingresa la unidad que solicita">
-                                    </div>                                    
+                            
+                        </header>                        
+                        <div class="card-body p-0">
+                            <!--Cuadro de Busqueda-->
+                                <div class="card card-success">
+                                <div class="card-header Titulo">
+                                    <h3 class="card-title">Buscar Petición</h3>
+                                    <div class="input-group">
+                                        <input type="text" id="buscar-peticion" class="form-control float-left" placeholder="Ingresar codigo de su peticion a buscar">
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                <div id="insumos" class="row d-flex aling-items-strech"></div>
                                 </div>
                             </div>
-                        </header>                        
-                        <div id="cp"class="card-body p-0">
-                            <table class="compra table table-hover text-nowrap">
-                                <thead class='table-success'>
-                                    <tr>
-                                        <th scope="col">Codigo de Insumo</th>
-                                        <th scope="col">Nombre Insumo</th>
-                                        <th scope="col">Area</th>
-                                        <th scope="col">Fecha de peticion</th>
-                                        <th scope="col">Cantidad Solicitada</th>
-                                        <th scope="col">Eliminar</th>
-                                    </tr>
+                                <!--Fin de cuadro de busqueda-->
+                            <table class="compra table table-hover text-nowrap" id="Table">
+                                <thead id="encabezado" class='table-success'>
+                                    
                                 </thead>
                                 <tbody id="lista-compra" class='table-active'>
                                     
@@ -56,11 +52,9 @@ if (!empty($_SESSION['us_tipo'])) {
                            
                         <div class="row justify-content-between">
                             <div class="col-md-4 mb-2">
-                                <a href="../Vistas/Vista_principal_admin.php" class="añadir btn btn-primary btn-block">Añadir mas insumos</a>
+                                <a href="../Vistas/Vista_principal_admin.php" class="añadir btn btn-primary btn-block">Volver a pantalla de inicio</a>
                             </div>
-                            <div class="col-xs-12 col-md-4">
-                                <a href="#" class="btn btn-success btn-block" id="procesar-peticion-final">Realizar petición</a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -87,5 +81,5 @@ else {
 }
 ?>
 <!--<script src="../Js/Gestion_Insumo.js"></script>-->
-<script src="../Js/Carrito.js"></script>
+<script src="../Js/Gestion_Peticiones.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

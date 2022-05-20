@@ -2,7 +2,7 @@ $(document).ready(function(){
   //Declaracion de variables 
   $('.select2').select2({
     dropdownParent: $('#crearusuarios .modal-content')
-});
+  });
   var funcion;
   var edit = false;
   var edit = false;

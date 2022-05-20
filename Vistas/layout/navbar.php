@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+  
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -23,6 +24,15 @@
 <nav class="navbar navbar-light bg-light fixed-top">
    <div class="container-fluid menu_bar">
     <a class="navbar-brand" href="../Vistas/Vista_principal_admin.php">HOSFRAM</a>
+    <a class="navbar-brand">Bienvenid@: <?php echo  $_SESSION['nombre']?></a>
+    <a class="navbar-brand" href="#"></a>
+    <a class="navbar-brand" href="#"></a>
+    <a class="navbar-brand" href="#"></a>
+    <a class="navbar-brand" href="#"></a>
+    <a class="navbar-brand" href="#"></a>
+    <a class="navbar-brand" href="#"></a>
+    <a class="navbar-brand" href="#"></a>
+    <a class="navbar-brand" href="#"></a>
     <!--Dropdown para carrrito-->
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -50,7 +60,7 @@
             <a class="nav-link active" aria-current="page" href="../Vistas/index_usuarios.php">Usuarios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../Vistas/peticiones.php">Peticiones de Insumos</a>
+            <a class="nav-link active" aria-current="page" href="../Vistas/peticionesxpersonas.php">Peticiones de Insumos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="../Controlador/logout.php">Cerrar Sesion</a>

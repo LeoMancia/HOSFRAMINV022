@@ -67,7 +67,7 @@ $(document).ready(function(){
         funcion="rellenar_insumo";
         $.post('../Controlador/insumoController.php',{consulta,funcion},(response)=>{
             const Insumos = JSON.parse(response);    
-            console.log(consulta);        
+            //console.log(response);        
             let template='';
             $('#Table > tbody').empty();
             //Verificar la ubicacion del usuario para mostrar un tipo especifico de HTML de Insumos
@@ -182,7 +182,7 @@ $(document).ready(function(){
         $('#precio').val(precio);
         $('#cantidad').val(cantidad);  
         edit=true;
-        console.log(id,nombreinsumo,desinsumo,precio,cantidad,estado,codigo,fecha);
+        //console.log(id,nombreinsumo,desinsumo,precio,cantidad,estado,codigo,fecha);
     })
 
     //bloque de codigo que captura lo que se escribe en el teclado

@@ -8,11 +8,13 @@ class Peticion{
         $db = new Conexion();
         $this->acceso = $db->pdo;
     }
-    function Crear($fecha,$area,$idpeticiones,$nombre,$descripcion,$cant_solici,$cod_producto,$idunicopeticion){
-        $sql = "INSERT INTO vale_salida(codigo_vle,codigo_ism,nom_prod,area_peticion,cant_solicitada,fecha_peticion,id_usr)
-        VALUES(:idpeticion,:idinsumo,:nom_prod,:area,:cant_solicitada,:fecha,:iduser)";
+
+    //crea nuevo vale de salida
+    function Crear($fecha,$area,$idpeticiones,$nombre,$descripcion,$cant_solici,$cod_producto,$idunicopeticion,$iduser){
+        $sql = "INSERT INTO vale_salida(codigo_vle,codigo_ism,nom_prod,area_peticion,cant_solicitada,fecha_peticion,id_usr,id_ind,estado)
+        VALUES(:idpeticion,:idinsumo,:nom_prod,:area,:cant_solicitada,:fecha,:iduser,:id_ind,1)";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':idpeticion'=>$idpeticiones,':idinsumo'=>$cod_producto,':nom_prod'=>$nombre,':area'=>$area,':cant_solicitada'=>$cant_solici,':fecha'=>$fecha,':iduser'=>$idunicopeticion));
+        $query->execute(array(':idpeticion'=>$idpeticiones,':idinsumo'=>$cod_producto,':nom_prod'=>$nombre,':area'=>$area,':cant_solicitada'=>$cant_solici,':fecha'=>$fecha,':iduser'=>$idunicopeticion,':id_ind'=>$iduser));
           
     }
 
@@ -25,13 +27,42 @@ class Peticion{
         $this->objetos = $query->fetchall();
         return $this->objetos;
     }
-
+    
+    //Bloque de codigo que actualiza la cantidad en existencia
     function actualizar_stock($cant_solici,$id){
         $sql = "UPDATE insumos SET existencia = existencia - :cantidad WHERE codigo_ism =:id";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id'=>$id,':cantidad'=>$cant_solici));
-        
+        $query->execute(array(':id'=>$id,':cantidad'=>$cant_solici));  
     }
-    
 
+    
+    //Experimental, metodo que obtiene los datos de la tabla Vale Salida
+    function obtener_peticiones($iduser){
+       if (!empty($_POST['consulta'])) {
+           
+        $consulta = $_POST['consulta'];
+        $sql = "SELECT * FROM vale_salida WHERE codigo_vle LIKE :consulta AND id_ind = :iduser AND estado = 1 LIMIT 50";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':iduser'=>$iduser,':consulta'=>"%$consulta%"));
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+        
+       } else {
+        $sql = "SELECT * FROM vale_salida WHERE id_ind = :iduser AND estado = 1  ";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':iduser'=>$iduser));
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+       }
+       
+    }
+
+    function cambiar_estado($id_editado){
+        $sql = "UPDATE vale_salida SET estado = 0 WHERE id_usr = :id";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$id_editado));
+        echo 'editado';
+    }
+
+    
 }

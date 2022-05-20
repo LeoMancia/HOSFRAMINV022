@@ -10,7 +10,6 @@ if (!empty($_SESSION['us_tipo'])) {
 
 <section>
 </section>
-
 <input type="hidden" id="vist" value="vpi">
 <!--Formulario de creacion de Tipos-->
 <div class="container">
