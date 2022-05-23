@@ -146,7 +146,7 @@
       color: #000;
     }
     .compra tbody tr td:nth-child(6):before {
-      content: "Eliminar";
+      content: "Imprimir Vale";
       font-weight: bold;
       font-size: 15px;
       color: #000;

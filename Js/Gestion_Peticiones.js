@@ -3,11 +3,12 @@ $(document).ready(function(){
 $('.select2').select2({
     dropdownParent: $('#crearusuarios .modal-content')
   });
+  
   var funcion;
   let vista = $('#rol').val();    
   peticiones();
 
-  if (vista==1) {
+  if (vista==1  || vista==3) {
     template2=`
     <tr>
     <th scope="col">Codigo de Petición</th>
@@ -44,7 +45,7 @@ $('#encabezado').append(template2);
         let template='';
         $('#Table > tbody').empty();
        //verificar el rol del usuario
-       if (vista==1) {
+       if (vista==1 || vista==3) {
       
         Peticiones.forEach(peticion => {
            template=`

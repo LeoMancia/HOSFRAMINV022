@@ -15,7 +15,7 @@ if (!empty($_SESSION['us_tipo'])) {
             header('Location: ../Vistas/Vista_principal_admin.php');
             break;
         case 3:
-            header('Location: ../Vistas/adm_catalogo.html');
+            header('Location: ../Vistas/Vista_principal_admin.php');
             break;
        
      }
@@ -40,7 +40,7 @@ if(!empty($usuario->objetos)){
             header('Location: ../Vistas/Vista_principal_admin.php');
             break;
         case 3:
-            header('Location: ../Vistas/adm_catalogo.html');
+            header('Location: ../Vistas/Vista_principal_admin.php');
             break;
         default:
             

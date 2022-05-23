@@ -48,7 +48,7 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../Vistas/index_tipo_usr.php">Crear Tipos de Usuarios</a>
+            <a class="nav-link active" aria-current="page" href="../Vistas/index_tipo_usr.php">Tipos de Usuarios</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="../Vistas/areas.php">Areas</a>

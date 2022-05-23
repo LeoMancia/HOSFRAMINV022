@@ -48,11 +48,20 @@ class Peticion{
         return $this->objetos;
         
        } else {
-        $sql = "SELECT * FROM vale_salida WHERE id_ind = :iduser AND estado = 1  ";
-        $query = $this->acceso->prepare($sql);
-        $query->execute(array(':iduser'=>$iduser));
-        $this->objetos = $query->fetchall();
-        return $this->objetos;
+        if ($_SESSION['us_tipo']==1 || $_SESSION['us_tipo']==3) {
+            $sql = "SELECT * FROM vale_salida WHERE estado = 1  ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute();
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+        } else {
+            $sql = "SELECT * FROM vale_salida WHERE id_ind = :iduser AND estado = 1  ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':iduser'=>$iduser));
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+        }
+        
        }
        
     }

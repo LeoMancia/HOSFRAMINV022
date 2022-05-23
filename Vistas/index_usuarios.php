@@ -165,4 +165,5 @@ else {
     }
 </script>
 <script src="../Js/Gestion_Usuarios.js"></script>
+<script src="../Js/Validaciones.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

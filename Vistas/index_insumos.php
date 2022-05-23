@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
+if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1 || $_SESSION['us_tipo']==3) {
     include_once 'layout/header.php';   
 ?>
     <title>Insumos</title>

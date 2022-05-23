@@ -6,6 +6,7 @@ session_start();
 $area = $_SESSION['area'];
 $iduser = $_SESSION['usuario'];
 
+
 if ($_POST['funcion']=='registrar_peticion') {
     $idpeticiones = $_POST['idpeticiones'];
     $nombre = $_POST['nombre'];
