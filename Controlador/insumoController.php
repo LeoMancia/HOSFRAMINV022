@@ -22,6 +22,12 @@ if ($_POST['funcion']=='rellenar_insumo') {
     $insumo->rellenar_insumos();
     $json = array();
     foreach ($insumo->objetos as $objeto) {
+        if ($objeto->estado > 0) {
+            $Estado = "Activo";
+        } else {
+            $Estado = "Inactivo";
+        }
+        
         $json[]=array(
             'id'=>$objeto->codigo_ism,
             'nombre_insumo'=>$objeto->nombre_ism,
@@ -29,9 +35,8 @@ if ($_POST['funcion']=='rellenar_insumo') {
             'precio'=>$objeto->precio,
             'existencia'=>$objeto->existencia,
             'Fecha'=>$objeto->fecha,
-            'estado'=>$objeto->estado,
+            'estado'=>$Estado,
             'id_insumo'=>$objeto->id_insumo 
-                      
         );
     }
     $jsonstring=json_encode($json);
@@ -59,7 +64,13 @@ if ($_POST['funcion']=='editar_insumo') {
     $estado = $_POST['estado'];
     $fecha = $_POST['fecha'];
     $insumo->editar($codigo,$nominsumo,$desinsumo,$precio,$cantidad,$estado,$fecha,$id_editado);
-
+    $insumo->obtener_existencia($id_editado);
+    foreach ($insumo->objetos as $obj ) {
+        $total=$obj->total;
+        if ($cantidad > $total) {
+            $insumo->actualizar_estado($id_editado);
+        }
+    }
 }
 
 //Metodo de verificacion de stock

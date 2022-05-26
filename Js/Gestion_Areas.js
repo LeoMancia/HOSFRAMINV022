@@ -13,7 +13,26 @@ $(document).ready(function(){
     $('#crearcargos').submit(e=>{
         let area = $('#area').val();
         let id_editado = $('#id_cargo').val();
-        
+        let expresionarea =/^[A-Za-z\s]+$/g;
+        var OK = expresionarea.exec(area);
+        if (!OK) {
+          Swal.fire({
+            title: '¡Error!',
+            html:
+            'Las Areas de usuario deben contener:</br> ' +
+            '<b> - Solamente letras</b>,</br>' +
+            '<b> - Minusculas y Mayusculas</b>,</br>',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+          $('#area').focus();
+          $('#area').val('');
+        } else {
+          
         if (edit==false) {
           funcion='crear_area';
         } else {
@@ -43,6 +62,7 @@ $(document).ready(function(){
           }
           edit=false;
         });
+        }
        e.preventDefault();
     });
 

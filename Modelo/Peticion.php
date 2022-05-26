@@ -27,6 +27,14 @@ class Peticion{
         $this->objetos = $query->fetchall();
         return $this->objetos;
     }
+
+    //nueva sentencia para obtener el total de la existencia
+    function obtener_existencia($id){
+        $sql = "SELECT SUM(existencia) as total FROM insumos WHERE codigo_ism=:id";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$id));
+        $this->objetos = $query->fetchall();
+    }
     
     //Bloque de codigo que actualiza la cantidad en existencia
     function actualizar_stock($cant_solici,$id){
@@ -34,7 +42,6 @@ class Peticion{
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id'=>$id,':cantidad'=>$cant_solici));  
     }
-
     
     //Experimental, metodo que obtiene los datos de la tabla Vale Salida
     function obtener_peticiones($iduser){
@@ -66,6 +73,7 @@ class Peticion{
        
     }
 
+    //Bloque de codigo que actualiza el estado de la peticion de activo a inactivo
     function cambiar_estado($id_editado){
         $sql = "UPDATE vale_salida SET estado = 0 WHERE id_usr = :id";
         $query = $this->acceso->prepare($sql);
@@ -73,5 +81,11 @@ class Peticion{
         echo 'editado';
     }
 
+    //Bloque de codigo que actualiza la cantidad en existencia
+    function actualizar_estado($id){
+        $sql = "UPDATE insumos SET estado = 0 WHERE codigo_ism =:id";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$id));  
+    }
     
 }

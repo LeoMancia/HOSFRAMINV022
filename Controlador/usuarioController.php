@@ -33,7 +33,7 @@ if ($_POST['funcion']=='crear_usuario') {
     $password = $_POST['password'];
     $area = $_POST['area'];
     $tipouser = $_POST['tipo'];
-  
+    
     $usuario->crear($nombre,$apellido,$username,$password,$area,$tipouser);
     
 }

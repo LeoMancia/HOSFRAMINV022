@@ -12,8 +12,26 @@ $(document).ready(function(){
     $('#creartipous').submit(e=>{
         let tipo = $('#tipo').val();
         let id_editado = $('#id_editar_tipo').val();
-        
-        if (edit==false) {
+        let expresiontipo =/^[A-Za-z\s]+$/g;
+        var OK = expresiontipo.exec(tipo);
+        if (!OK) {
+          Swal.fire({
+            title: '¡Error!',
+            html:
+            'Las tipo de usuario debe contener:</br> ' +
+            '<b> - Solamente letras</b>,</br>' +
+            '<b> - Minusculas y Mayusculas</b>,</br>',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+          $('#tipo').focus();
+          $('#tipo').val('');
+        } else {
+          if (edit==false) {
           funcion='crear_tipo';
         } else {
           funcion='editar_tipo';
@@ -42,6 +60,7 @@ $(document).ready(function(){
           }
           edit=false;
         });
+        }
        e.preventDefault();
     });
 

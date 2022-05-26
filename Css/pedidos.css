@@ -61,9 +61,9 @@
   .compra th{
   
     font-size: 18px;
-    color: #fff;
+    color: rgb(0, 0, 0);
     line-height: 1.2;
-    font-weight: unset;
+    font-weight: bold;
   }
   /*resalto de cada fila*/
   .compra tbody tr:nth-child(even) {

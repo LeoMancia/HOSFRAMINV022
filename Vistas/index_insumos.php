@@ -69,7 +69,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1 || $_SESSION['us_tip
                    
       </div>
       <div class="modal-footer">
-            <button type="submit" class="btn btn-outline-success float-right m-1" onClick="setTimeout(cerrar,1000)">Guardar</button>
+            <button type="submit" class="btn btn-outline-success float-right m-1">Guardar</button>
             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
             </form>
       </div>
@@ -152,9 +152,7 @@ else {
 }
 ?>
 <script>
-    function cerrar() {
-        $('#crearinsumos').modal('hide');
-    }
+   
     function limpiarforms(){
       $('#codigo').val('');
       $('#nominsumo').val('');

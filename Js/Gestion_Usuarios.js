@@ -3,6 +3,7 @@ $(document).ready(function(){
   $('.select2').select2({
     dropdownParent: $('#crearusuarios .modal-content')
   });
+  
   var funcion;
   var edit = false;
   var edit = false;
@@ -57,7 +58,27 @@ function tipos() {
       let tipo = $('#tipouser').val();
       let id_editado = $('#id_usuario').val();
       
-      if (edit==false) {
+      let expresionpass =/^[A-Z-a-z\d]{4,8}$/;
+      var OK = expresionpass.exec(password);
+      if (!OK) {
+        Swal.fire({
+          title: '¡Error!',
+          html:
+          'Las contraseña debe tener </br> <b> - 4-8 caracteres</b>,</br> ' +
+          '<b> - Incluir mayusculas</b>,</br>' +
+          '<b> - Minusculas</b>,</br>'+
+          '<b> - Un numero.</b>',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+        $('#password').focus();
+        $('#password').val('');
+      } else {
+        if (edit==false) {
         funcion='crear_usuario';
       } else {
         funcion='editar_usuario';
@@ -85,7 +106,9 @@ function tipos() {
         }
         edit=false;
       });
-     e.preventDefault();
+     
+      }
+      e.preventDefault();
   });
 
 

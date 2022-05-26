@@ -37,7 +37,11 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
               <!--Mensaje de Alerta error-->
               <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
                     <span><i class="fas fa-times m-1"></i>¡Error!, ¡Hubo un eror!, comunicarse con Informática</span>
-              </div>    
+              </div> 
+             <!--Mensaje de Alerta de error de contraseña-->
+             <div class="alert alert-danger text-center" id="nopass" style='display:none;'>
+                    <span><i class="fas fa-times m-1"></i>¡Error!, La contraseña debe contener un numero, mayusculas y minusculas</span>
+              </div>       
                  <div class="text-center">
                     <img src="../Img/logo.png" class="rounded-circle" alt="Cinque Terre" width="136" height="136">
               </div>
@@ -71,7 +75,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
                    
       </div>
       <div class="modal-footer">
-            <button type="submit" class="btn btn-outline-success float-right m-1" onClick="setTimeout(cerrar,1000)">Guardar</button>
+            <button type="submit" class="btn btn-outline-success float-right m-1" >Guardar</button>
             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
             </form>
       </div>
@@ -153,9 +157,11 @@ else {
 }
 ?>
 <script>
+    /*
     function cerrar() {
         $('#crearusuarios').modal('hide');
     }
+    */
     function limpiarforms(){
         $('#id_usuario').val('');
       $('#nombreusuario').val('');
@@ -165,5 +171,4 @@ else {
     }
 </script>
 <script src="../Js/Gestion_Usuarios.js"></script>
-<script src="../Js/Validaciones.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

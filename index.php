@@ -53,9 +53,10 @@ else {
                         <div class="input-div pass">
 
                         </div>              
-                            <div class="form-group">
-                                <label class="contraseña">Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Contraseña" name="pass">
+                            <div class="campo form-group">
+                                <label for="password" class="contraseña">Contraseña</label>
+                                <input type="password" class="form-control" placeholder="Contraseña" name="pass" id="password">
+                                <span>Mostrar</span>
                             </div>
                            <input type="submit" class="btn btn-black" value="iniciar sesion">
 
@@ -71,7 +72,20 @@ else {
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-         
+<script>
+    document.querySelector('.campo span').addEventListener('click', e => {
+    const passwordInput = document.querySelector('#password');
+    if (e.target.classList.contains('show')) {
+        e.target.classList.remove('show');
+        e.target.textContent = 'Ocultar';
+        passwordInput.type = 'text';
+    } else {
+        e.target.classList.add('show');
+        e.target.textContent = 'Mostrar';
+        passwordInput.type = 'password';
+    }
+});
+</script>         
 <script src="Js/login.js"></script>
 </html>
 <?php
