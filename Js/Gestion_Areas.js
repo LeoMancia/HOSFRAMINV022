@@ -7,13 +7,13 @@ $(document).ready(function(){
     function limpiarforms(){
       $('#area').val('');
       $('#id_cargo').val('');
-      
+      //console.log()
     }
     //bloque de codigo que crea y modifica un usuario FUNCIONANDO PARA AREAS
     $('#crearcargos').submit(e=>{
         let area = $('#area').val();
         let id_editado = $('#id_cargo').val();
-        let expresionarea =/^[A-Za-z\s]+$/g;
+        let expresionarea =/^[A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ\s]+$/g;
         var OK = expresionarea.exec(area);
         if (!OK) {
           Swal.fire({
@@ -38,9 +38,8 @@ $(document).ready(function(){
         } else {
           funcion='editar_area';
         }
-         
         $.post('../Controlador/areaController.php',{area,id_editado,funcion},(response)=>{
-          console.log(response)
+          //console.log(response)
           if (response=='add') {              
             $('#add').hide('slow');
             $('#add').show(200);
@@ -67,11 +66,10 @@ $(document).ready(function(){
     });
 
     //TESTEO Obtener datos FUNCIONANDO PARA AREAS
-    
     function rellenar_areas() {
         funcion="rellenar_areas";
         $.post('../Controlador/areaController.php',{funcion},(response)=>{
-            console.log(response);
+            //console.log(response);
             const Areas = JSON.parse(response);
             let template='';
             $('#Table > tbody').empty();
@@ -96,9 +94,9 @@ $(document).ready(function(){
         const elemento= $(this)[0].activeElement.parentElement.parentElement;
         const id=$(elemento).attr('areaID');
         const area=$(elemento).attr('areanombre');
-        console.log(id);
-        console.log(area);
-        console.log(funcion);
+        //console.log(id);
+        //console.log(area);
+        //console.log(funcion);
         $('#id').val(id);
         $('#funcion').val(funcion);
        const swalWithBootstrapButtons = Swal.mixin({
@@ -137,7 +135,6 @@ $(document).ready(function(){
                     }
                     
                 }) 
-              
             } else if (result.dismiss === Swal.DismissReason.cancel) {
               swalWithBootstrapButtons.fire(
                 'Cancelado',
@@ -146,7 +143,6 @@ $(document).ready(function(){
               )
             }
           })
-
     })  
 
     //TESTEO 08/03/2022
@@ -155,14 +151,12 @@ $(document).ready(function(){
         const elemento= $(this)[0].activeElement.parentElement.parentElement;
         const id=$(elemento).attr('areaID');
         const area=$(elemento).attr('areanombre');
-        console.log(id);
-        console.log(area);
-     
-
+        //console.log(id);
+        //console.log(area);
       $('#area').val(area);
       $('#id_cargo').val(id);
       edit=true;
-      console.log(id, area, edit);
+      //console.log(id, area, edit);
     })
 
 });

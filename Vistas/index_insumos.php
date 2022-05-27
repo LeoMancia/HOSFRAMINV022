@@ -34,7 +34,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1 || $_SESSION['us_tip
               </div>
               <!--Mensaje de Alerta error-->
               <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
-                    <span><i class="fas fa-times m-1"></i>¡Error!, ¡Hubo un eror!</span>
+                    <span><i class="fas fa-times m-1"></i>¡Error!, ¡Ya existe un insumo con el mismo codigo!</span>
               </div>    
                  <div class="text-center">
                     <img src="../Img/logo.png" class="rounded-circle" alt="Cinque Terre" width="204" height="136">

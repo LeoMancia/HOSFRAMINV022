@@ -36,7 +36,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
               </div>
               <!--Mensaje de Alerta error-->
               <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
-                    <span><i class="fas fa-times m-1"></i>¡Error!, ¡Hubo un eror!, comunicarse con Informática</span>
+                    <span><i class="fas fa-times m-1"></i>¡Error!, ¡Hubo un eror!, Ya existe el Username</span>
               </div> 
              <!--Mensaje de Alerta de error de contraseña-->
              <div class="alert alert-danger text-center" id="nopass" style='display:none;'>

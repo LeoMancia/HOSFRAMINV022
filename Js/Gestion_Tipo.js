@@ -12,7 +12,7 @@ $(document).ready(function(){
     $('#creartipous').submit(e=>{
         let tipo = $('#tipo').val();
         let id_editado = $('#id_editar_tipo').val();
-        let expresiontipo =/^[A-Za-z\s]+$/g;
+        let expresiontipo =/^[A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ\s]+$/g;
         var OK = expresiontipo.exec(tipo);
         if (!OK) {
           Swal.fire({
@@ -38,7 +38,7 @@ $(document).ready(function(){
         }
          
         $.post('../Controlador/tipoController.php',{tipo,id_editado,funcion},(response)=>{
-          console.log(response)
+          //console.log(response)
           if (response=='add') {              
             $('#add').hide('slow');
             $('#add').show(200);
@@ -69,7 +69,7 @@ $(document).ready(function(){
     function rellenar_tipos() {
         funcion="rellenar_tipos";
         $.post('../Controlador/tipoController.php',{funcion},(response)=>{
-            console.log(response);
+            //console.log(response);
             const Tipos = JSON.parse(response);
             let template='';
             $('#Table > tbody').empty();
@@ -94,10 +94,9 @@ $(document).ready(function(){
         const elemento= $(this)[0].activeElement.parentElement.parentElement;
         const id=$(elemento).attr('tipoID');
         const nombre=$(elemento).attr('tiponombre');
-        console.log(id);
-        console.log(nombre);
-       
-        console.log(funcion);
+        //console.log(id);
+        //console.log(nombre);
+        //console.log(funcion);
         $('#id').val(id);
         $('#funcion').val(funcion);
        const swalWithBootstrapButtons = Swal.mixin({
@@ -157,7 +156,7 @@ $(document).ready(function(){
       $('#id_editar_tipo').val(id);
       $('#tipo').val(nombre);
       edit=true;
-      console.log(id, nombre, edit);
+      //console.log(id, nombre, edit);
     })
 
 });

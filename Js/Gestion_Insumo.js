@@ -71,7 +71,7 @@ $(document).ready(function(){
                     funcion='editar_insumo';
                   }                   
                   $.post('../Controlador/insumoController.php',{codigo,nominsumo,desinsumo,precio,cantidad,estado,fecha,id_editado,funcion},(response)=>{
-                    console.log(response)
+                //console.log(response)
                     if (response=='add') {              
                       $('#add').hide('slow');
                       $('#add').show(200);
@@ -83,7 +83,9 @@ $(document).ready(function(){
                       $('#noadd').hide('slow');
                       $('#noadd').show(200);
                       $('#noadd').hide(5000);
-                      limpiarforms();
+                      $('#codigo').val('');
+                      $('#codigo').focus();
+                      //limpiarforms();
                       //$('#crearinsumos').modal('hide');
                     } if (response=='editado') {
                       $('#edit-tipo').hide('slow');
@@ -199,9 +201,9 @@ $(document).ready(function(){
         const elemento= $(this)[0].activeElement.parentElement.parentElement;
         const id=$(elemento).attr('insumoID');
         const nombreinsumo=$(elemento).attr('nombreinsumo');
-        console.log(id);
+    //console.log(id);
        
-        console.log(funcion);
+    //console.log(funcion);
         $('#id').val(id);
         $('#funcion').val(funcion);
        const swalWithBootstrapButtons = Swal.mixin({
@@ -222,7 +224,7 @@ $(document).ready(function(){
           }).then((result) => {
             if (result.isConfirmed) {
                 $.post('../Controlador/insumoController.php',{id,funcion},(response)=>{ 
-                  console.log(response);
+              //console.log(response);
                   edit=false;
                     if (response=='borrado') {
                         swalWithBootstrapButtons.fire(
@@ -276,7 +278,7 @@ $(document).ready(function(){
       let valor = $(this).val();
       if (valor !="") {
         rellenar_insumos(valor);
-          console.log(valor)
+      //console.log(valor)
       } else {
         rellenar_insumos();
       }

@@ -11,10 +11,19 @@ class Insumo{
 
     //crear un nuevo usuario mediante modal
     function crear($codigo,$nominsumo,$desinsumo,$precio,$cantidad,$estado,$fecha){
-        $sql = "INSERT INTO insumos(nombre_ism,descripcion,precio,existencia,fecha,estado,id_insumo) VALUES(:nominsumo,:desinsumo,:precio,:cantidad,:fecha,:estado,:codigo)";
-        $query = $this->acceso->prepare($sql);
-        $query->execute(array(':nominsumo'=>$nominsumo,':desinsumo'=>$desinsumo,':precio'=>$precio,':cantidad'=>$cantidad,':fecha'=>$fecha,':estado'=>$estado,':codigo'=>$codigo));
-        echo 'add';
+        $sql = "SELECT id_insumo FROM insumos WHERE id_insumo =:codigo";
+        $query = $this ->acceso->prepare($sql);
+        $query->execute(array(':codigo'=>$codigo));
+        $this->objetos=$query->fetchall();
+        if (!empty($this->objetos)) {
+            echo 'noadd';
+        } else {
+            $sql = "INSERT INTO insumos(nombre_ism,descripcion,precio,existencia,fecha,estado,id_insumo) VALUES(:nominsumo,:desinsumo,:precio,:cantidad,:fecha,:estado,:codigo)";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':nominsumo'=>$nominsumo,':desinsumo'=>$desinsumo,':precio'=>$precio,':cantidad'=>$cantidad,':fecha'=>$fecha,':estado'=>$estado,':codigo'=>$codigo));
+            echo 'add';
+        }     
+      
     }
 
     //TESTEO//

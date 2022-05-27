@@ -98,7 +98,7 @@ $('#encabezado').append(template2);
         if (result.isConfirmed) {
             
             $.post('../Controlador/peticionController.php',{Id,funcion},(response)=>{
-                console.log(response);
+                //console.log(response);
                 if (response=='editado') {
                     Swal.fire(
                         'Estado de la operación',
