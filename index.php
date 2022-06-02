@@ -47,7 +47,7 @@ else {
                         <div class="input-div name">
                             <div class="form-group">
                                 <label class="UserName">Nombre</label>
-                                <input type="text" class="form-control" placeholder="Nombre de Usuario" name="user">
+                                <input type="text" class="form-control" placeholder="Nombre de Usuario" name="user" required>
                             </div>
                         </div>
                         <div class="input-div pass">
@@ -55,10 +55,10 @@ else {
                         </div>              
                             <div class="campo form-group">
                                 <label for="password" class="contraseña">Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Contraseña" name="pass" id="password">
+                                <input type="password" class="form-control" placeholder="Contraseña" name="pass" id="password" required>
                                 <span>Mostrar</span>
                             </div>
-                           <input type="submit" class="btn btn-black" value="iniciar sesion">
+                           <input type="submit" class="btn btn-black" value="Iniciar Sesion">
 
                         </form>
                     </center>
@@ -72,6 +72,7 @@ else {
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     document.querySelector('.campo span').addEventListener('click', e => {
     const passwordInput = document.querySelector('#password');

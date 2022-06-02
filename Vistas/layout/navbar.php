@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   
@@ -17,7 +18,7 @@
     <title>Hello, Admin</title>
   </head>
   <body>
-
+  <input id="tipouser" type="hidden" value="<?php echo $_SESSION['us_tipo']?>">
 
   
  <!--Navbar de opciones-->
@@ -54,10 +55,10 @@
             <a class="nav-link active" aria-current="page" href="../Vistas/areas.php">Areas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../Vistas/index_insumos.php">Insumos</a>
+            <a class="nav-link active" aria-current="page" href="../Vistas/index_usuarios.php">Usuarios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../Vistas/index_usuarios.php">Usuarios</a>
+            <a class="nav-link active" aria-current="page" href="../Vistas/index_insumos.php">Insumos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="../Vistas/peticionesxpersonas.php">Peticiones de Insumos</a>
@@ -71,6 +72,5 @@
     </div>
   </div>
 </nav>
-
 
 

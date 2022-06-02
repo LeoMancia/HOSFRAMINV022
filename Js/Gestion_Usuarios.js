@@ -36,19 +36,18 @@ $(document).ready(function(){
     })
 }
 function tipos() {
-    funcion="rellenar_tipos";
-    $.post('../Controlador/tipoController.php',{funcion},(response)=>{
-        const Tipos = JSON.parse(response);
-        let template='';
-        Tipos.forEach(tipos => {
-            template+=`
-            <option value="${tipos.id}">${tipos.tipo}</option>
-            `;
-        });
-        $('#tipouser').html(template);
-    })
+  funcion="rellenar_tipos";
+  $.post('../Controlador/tipoController.php',{funcion},(response)=>{
+      const Tipos = JSON.parse(response);
+      let template='';
+      Tipos.forEach(tipos => {
+          template+=`
+          <option value="${tipos.id}">${tipos.tipo}</option>
+          `;
+      });
+      $('#tipos').html(template);
+  })
 }
-
   //bloque de codigo que crea y modifica un usuario FUNCIONANDO PARA AREAS
   $('#crearusuarios').submit(e=>{
       let nombre = $('#nombreusuario').val();
@@ -56,7 +55,7 @@ function tipos() {
       let username = $('#username').val();
       let password = $('#password').val();
       let area = $('#area').val();
-      let tipo = $('#tipouser').val();
+      let tipo = $('#tipos').val();
       let id_editado = $('#id_usuario').val();
       let expresiontextos =/^[A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ\s]+$/;
       let expresiontextos1 =/^[A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ\s]+$/;
@@ -271,7 +270,7 @@ function tipos() {
       $('#apellidousuario').val(apellido);
       $('#username').val(username);
       $('#area').val(area);
-      $('#tipouser').val(tipo);
+      $('#tipos').val(tipo);
       $('#password').val(password);
       $('#id_usuario').val(id);
       

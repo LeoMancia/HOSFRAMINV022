@@ -69,7 +69,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
                     </div>  
                     <div class="form-group">
                         <label for="tipo">Tipo de Usuario</label>
-                        <select name="tipo" id="tipouser" class="form-control select2" style="width: 100%;"></select>                        
+                        <select name="tipo" id="tipos" class="form-control select2" style="width: 100%;"></select>                        
                     </div>  
                     
                    

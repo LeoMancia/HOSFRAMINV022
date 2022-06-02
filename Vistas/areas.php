@@ -3,7 +3,7 @@ session_start();
 if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
     include_once 'layout/header.php';   
 ?>
-    <title>Area administrativa de cargos</title>
+    <title>Zona administrativa de Areas</title>
 <?php 
     include_once 'layout/navbar.php';
 ?>
@@ -65,7 +65,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
                     </div>
                 </div>
                 <div class="col-md-6">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearcargos" onClick="limpiarforms()">  Crear Tipo </button>                
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearcargos" onClick="limpiarforms()">  Crear Nueva Area </button>                
                 </div>
             </div>        
         </div>
