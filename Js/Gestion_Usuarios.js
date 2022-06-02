@@ -141,16 +141,16 @@ function tipos() {
           var error4 = '';
         break;
         case "UserName":
-          var error1 = '<b> - Solamente letras</b>,</br>';
-          var error2 = '<b> - Puede contener numeros.</b>,</br>';
+          var error1 = '<b> - Letras Minusculas y Mayusculas</b>,</br>';
+          var error2 = '<b> - Puede contener numeros.</b></br>';
           var error3 = '';
           var error4 = '';
         break;
         case "Contraseña":
 
           var error1 = '<b> - 4-8 caracteres</b>,</br> ';
-          var error2 = '<b> - Incluir mayusculas</b>,</br>';
-          var error3 = '<b> - Minusculas</b>,</br>';
+          var error2 = '<b> - Incluir mayusculas y Minusculas</b>,</br>';
+          var error3 = '<b> -	No es permitido caracteres especiales: (. +-*/)</b>,</br>';
           var error4 = '<b> - Un numero.</b>';
         break;
     
