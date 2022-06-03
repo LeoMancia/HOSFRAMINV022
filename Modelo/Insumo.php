@@ -83,6 +83,8 @@ class Insumo{
         }
     }
 
+
+
     // TESTEO DE METODO UPDATE funcionando al 100%
     function editar($codigo,$nominsumo,$desinsumo,$precio,$cantidad,$estado,$fecha,$id_editado){
         $sql = "UPDATE insumos SET nombre_ism=:nominsumo,descripcion=:desinsumo,precio=:precio,existencia=:cantidad,fecha=:fecha,estado=:estado,id_insumo=:codigo WHERE codigo_ism=:id_editado";
@@ -99,12 +101,14 @@ class Insumo{
         $this->objetos = $query->fetchall();
     }
 
-     //Bloque de codigo que actualiza la cantidad en existencia
+     //Bloque de codigo que actualiza el estado del insumo
      function actualizar_estado($id_editado){
         $sql = "UPDATE insumos SET estado = 1 WHERE codigo_ism =:id";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id'=>$id_editado));  
     }
+
+  
 
     function obtener_stock($id){
 

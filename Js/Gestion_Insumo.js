@@ -15,7 +15,7 @@ $(document).ready(function(){
       $('#precio').val('');
       $('#cantidad').val('');
     }
-    //bloque de codigo que crea y modifica un usuario FUNCIONANDO PARA AREAS
+    //bloque de codigo que crea y modifica un usuario FUNCIONANDO PARA Insumos
     $('#crearinsumos').submit(e=>{
         let codigo = $('#codigo').val();
         let nominsumo = $('#nominsumo').val();

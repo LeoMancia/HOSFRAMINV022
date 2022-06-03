@@ -34,6 +34,7 @@ class Peticion{
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id'=>$id));
         $this->objetos = $query->fetchall();
+        return $this->objetos;
     }
     
     //Bloque de codigo que actualiza la cantidad en existencia

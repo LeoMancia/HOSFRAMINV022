@@ -36,10 +36,11 @@ if ($_POST['funcion']=='registrar_peticion') {
     (La cantidad solicitada y la cantidad en existencia) al hacerse la resta se quedaria a cero, por lo cual se actualiza el estado del 
     insumo a inactivo y se actualiza el stock 
     */
+
     $peticion->obtener_existencia($id);
     foreach ($peticion->objetos as $obj ) {
         $total=$obj->total;
-        if ($cant_solici = $total) {
+        if ($cant_solici == $total) {
             $peticion->actualizar_estado($id);
         }
     }

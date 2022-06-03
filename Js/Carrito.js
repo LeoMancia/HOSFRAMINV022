@@ -3,6 +3,7 @@ $(document).ready(function(){
     RecuperarLS_carrito_compra();
     RecuperarLS_carrito();
     
+    //Bloque de codigo que agrega los insumos al carrito 
     $(document).on('click','.agregar_peticion',(e)=>{
         const elemento= $(this)[0].activeElement.parentElement.parentElement;
         const id=$(elemento).attr('insumoID');
@@ -61,6 +62,7 @@ $(document).ready(function(){
         }
     })
 
+    //Bloque de codigo que borra un insumo individual del carrito
     $(document).on('click','.borrar-ins',(e)=>{
         const elemento= $(this)[0].activeElement.parentElement.parentElement;
         const id=$(elemento).attr('prodID');
@@ -70,6 +72,7 @@ $(document).ready(function(){
         Contar_productos();
     })
 
+    //Vacia el carrito completamente
     $(document).on('click','#vaciar-carrito ',(e)=>{
        $('#lista').empty();     
        EliminarLS();
@@ -148,7 +151,7 @@ $(document).ready(function(){
   $(document).on('click', '#procesarPedido',(e=>{
     Procesar_Pedido();    
     prueba = Procesar_Pedido();
-    console.log(prueba)
+    //console.log(prueba)
 }))
 
     $(document).on('click', '#procesar-peticion-final',(e=>{
