@@ -19,7 +19,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1 || $_SESSION['us_tip
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Creacion de Insumos</h5>
+        <h5 class="modal-title">Creación de Insumos</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
         </button>        
       </div>
@@ -34,15 +34,15 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1 || $_SESSION['us_tip
               </div>
               <!--Mensaje de Alerta error-->
               <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
-                    <span><i class="fas fa-times m-1"></i>¡Error!, ¡Ya existe un insumo con el mismo codigo!</span>
+                    <span><i class="fas fa-times m-1"></i>¡Error!, ¡Ya existe un insumo con el mismo código!</span>
               </div>    
                  <div class="text-center">
                     <img src="../Img/logo.png" class="rounded-circle" alt="Cinque Terre" width="204" height="136">
               </div>
               <form id="form-crear">
                     <div class="form-group">
-                        <label for="codigo">Codigo de Insumo</label>
-                        <input id="codigo" type="text" class="form-control" placeholder="123456789" required>  
+                        <label for="codigo">Código de Insumo</label>
+                        <input id="codigo" type="text" class="form-control" required>  
                                         
                     </div>
                     <div class="form-group">
@@ -84,7 +84,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1 || $_SESSION['us_tip
             <div class="row">
                 <div class="col-md-6">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left">Gestion de Insumos</h2>
+                        <h2 class="pull-left">Gestión de Insumos</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -97,7 +97,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1 || $_SESSION['us_tip
                 <div class="card-header Titulo">
                     <h3 class="card-title">Buscar Insumos</h3>
                     <div class="input-group">
-                        <input type="text" id="buscar-insumo" class="form-control float-left" placeholder="Ingresar codigo del insumo a buscar">
+                        <input type="text" id="buscar-insumo" class="form-control float-left" placeholder="Ingresar código del insumo a buscar">
                         <div class="input-group-append">
                             <button class="btn btn btn-success"><i class="fas fa-search"></i></button>
                         </div>
@@ -118,7 +118,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1 || $_SESSION['us_tip
                             <table class="insumo table table-hover text-nowrap display" id="Table">
                                  <thead class='table-success'>
                                         <tr>
-                                        <th scope="col">Codigo de Insumo</th>                                       
+                                        <th scope="col">Código de Insumo</th>                                       
                                         <th scope="col">Nombre Insumo</th>
                                         <th scope="col">Descripción</th>
                                         <th scope="col">Precio</th>                                       

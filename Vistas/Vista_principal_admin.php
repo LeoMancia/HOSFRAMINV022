@@ -3,7 +3,7 @@ session_start();
 if (!empty($_SESSION['us_tipo'])) {
     include_once 'layout/header.php';   
 ?>
-    <title>Tipos</title>
+    <title>Pantalla Principal</title>
 <?php 
     include_once 'layout/navbar.php';
 ?>
@@ -17,7 +17,7 @@ if (!empty($_SESSION['us_tipo'])) {
             <div class="row">
                 <div class="col-md-6 mt-3">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left">Gestion de Insumos</h2>
+                        <h2 class="pull-left">Gestión de Insumos</h2>
                     </div>
                 </div>    
                 <div class="col-md-6 mt-3" >
@@ -30,7 +30,7 @@ if (!empty($_SESSION['us_tipo'])) {
                         <table class="carro table table-hover text-nowrap">
                           <thead class="table-success">
                                  <tr>
-                                    <th>Codigo Prod</th>
+                                    <th>Código Prod</th>
                                     <th>Nombre Prod</th>
                                     <th>Descripción</th>
                                     <th>Eliminar</th>                  
@@ -40,8 +40,15 @@ if (!empty($_SESSION['us_tipo'])) {
                         
                         </tbody>
                         </table>
-                        <a href="#" id="procesarPedido" class="btn btn-primary btn-block">Crear Pedido</a>
-                        <a href="#" id="vaciar-carrito" class="btn btn-danger btn-block">Eliminar Insumos</a>
+                        <div class="row justify-content-between">
+                            <div class="col-md-4">
+                            <a href="#" id="procesarPedido" class="btn btn-primary btn-block">Crear Pedido</a>
+                            </div>
+                            <div class="col-md-3"></div>
+                            <div class=" col-md-5">
+                            <a href="#" id="vaciar-carrito" class="btn btn-danger btn-block">Eliminar Insumos</a>
+                            </div>
+                        </div>
                     </div>
                     <!--Carrito-->
                 </div>           
@@ -57,7 +64,7 @@ if (!empty($_SESSION['us_tipo'])) {
                 <div class="card-header Titulo">
                     <h3 class="card-title">Buscar Insumos</h3>
                     <div class="input-group">
-                        <input type="text" id="buscar-insumo" class="form-control float-left" placeholder="Ingresar codigo del insumo a buscar">
+                        <input type="text" id="buscar-insumo" class="form-control float-left" placeholder="Ingresar código del insumo a buscar">
                         <div class="input-group-append">
                             <button class="btn btn btn-success"><i class="fas fa-search"></i></button>
                         </div>
@@ -73,7 +80,7 @@ if (!empty($_SESSION['us_tipo'])) {
                             <table class="insumo table table-hover text-nowrap" id="Table">
                                  <thead class='table-success'>
                                         <tr>
-                                        <th scope="col">Codigo de Insumo</th>                                       
+                                        <th scope="col">Código de Insumo</th>                                       
                                         <th scope="col">Nombre Insumo</th>
                                         <th scope="col">Descripción</th>
                                         <th scope="col">Existencia</th>                                       

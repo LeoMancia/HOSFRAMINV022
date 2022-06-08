@@ -3,7 +3,7 @@ session_start();
 if (!empty($_SESSION['us_tipo'])) {
     include_once 'layout/header.php';   
 ?>
-    <title>Tipos</title>
+    <title>Peticiones</title>
 <?php 
     include_once 'layout/navbar.php';
 ?>
@@ -27,7 +27,7 @@ if (!empty($_SESSION['us_tipo'])) {
                             <div class="logo_cp">
                                 <img src="../img/logo.png" width="100" height="100">
                             </div>
-                            <h1 class="titulo_cp">SOLICITUD DE INSUMOS</h1>
+                            <h1 class="titulo_cp">Realizar Petición</h1>
                             <div class="datos_cp">
                                 <div class="form-group row">
                                     <span>Unidad Solicitante: </span>
@@ -41,10 +41,10 @@ if (!empty($_SESSION['us_tipo'])) {
                             <table class="compra table table-hover text-nowrap">
                                 <thead class='table-success'>
                                     <tr>
-                                        <th scope="col">Codigo de Insumo</th>
+                                        <th scope="col">Código de Insumo</th>
                                         <th scope="col">Nombre Insumo</th>
                                         <th scope="col">Area</th>
-                                        <th scope="col">Fecha de peticion</th>
+                                        <th scope="col">Fecha de petición</th>
                                         <th scope="col">Cantidad Solicitada</th>
                                         <th scope="col">Eliminar</th>
                                     </tr>
@@ -55,10 +55,11 @@ if (!empty($_SESSION['us_tipo'])) {
                             </table>
                            
                         <div class="row justify-content-between">
-                            <div class="col-md-4 mb-2">
+                            <div class="col-md-2 mb-2">
                                 <a href="../Vistas/Vista_principal_admin.php" class="añadir btn btn-primary btn-block">Añadir mas insumos</a>
                             </div>
-                            <div class="col-xs-12 col-md-4">
+                            <div class="col-md-8"></div>
+                            <div class=" col-md-2">
                                 <a href="#" class="btn btn-success btn-block" id="procesar-peticion-final">Realizar petición</a>
                             </div>
                         </div>

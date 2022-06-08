@@ -3,7 +3,7 @@ session_start();
 if (!empty($_SESSION['us_tipo'])) {
     include_once 'layout/header.php';   
 ?>
-    <title>Tipos</title>
+    <title>Solicitudes de Insumos</title>
 <?php 
     include_once 'layout/navbar.php';
 ?>
@@ -24,7 +24,7 @@ if (!empty($_SESSION['us_tipo'])) {
                             <div class="logo_cp">
                                 <img src="../img/logo.png" width="100" height="100">
                             </div>
-                            <h1 class="titulo_cp">SOLICITUD DE INSUMOS</h1>
+                            <h1 class="titulo_cp">SOLICITUDES DE INSUMOS</h1>
                             
                         </header>                        
                         <div class="card-body p-0">

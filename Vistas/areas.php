@@ -3,7 +3,7 @@ session_start();
 if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
     include_once 'layout/header.php';   
 ?>
-    <title>Zona administrativa de Areas</title>
+    <title>Areas</title>
 <?php 
     include_once 'layout/navbar.php';
 ?>

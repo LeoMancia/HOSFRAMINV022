@@ -3,7 +3,7 @@ session_start();
 if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
     include_once 'layout/header.php';   
 ?>
-    <title>Insumos</title>
+    <title>Usuarios</title>
 <?php 
     include_once 'layout/navbar.php';
 ?>
@@ -21,7 +21,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Creacion de Usuarios</h5>
+        <h5 class="modal-title">Creación de Usuarios</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
         </button>        
       </div>
@@ -90,7 +90,7 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
             <div class="row">
                 <div class="col-md-6">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left">Gestion de Usuarios</h2>
+                        <h2 class="pull-left">Gestión de Usuarios</h2>
                     </div>
                 </div>
                 <div class="col-md-6">

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../Css/select2.css" />
     <!--Carrito Css-->
     <link rel="stylesheet" href="../Css/main.css" />
-    <title>Hello, Admin</title>
+    <title>Sistema de peticion de insumos</title>
   </head>
   <body>
   <input id="tipouser" type="hidden" value="<?php echo $_SESSION['us_tipo']?>">
@@ -48,6 +48,12 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../Vistas/guardarbd.php">Crear Respaldo BD</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../Vistas/importar.php">Importar Respaldo BD</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="../Vistas/index_tipo_usr.php">Tipos de Usuarios</a>
           </li>
@@ -64,7 +70,7 @@
             <a class="nav-link active" aria-current="page" href="../Vistas/peticionesxpersonas.php">Peticiones de Insumos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../Controlador/logout.php">Cerrar Sesion</a>
+            <a class="nav-link active" aria-current="page" href="../Controlador/logout.php">Cerrar Sesión</a>
           </li>
          </li>
         </ul>
