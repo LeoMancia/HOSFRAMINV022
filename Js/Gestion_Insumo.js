@@ -28,7 +28,7 @@ $(document).ready(function(){
         let expresionid =/^[0-9]{8}$/;
         let expresiontextos =/^[A-Za-z\s]+$/;
         let expresiontextos1 =/^[A-Za-z\s]+$/;
-        let expresionprecio =/^[0-9]+([,][0-9]+)?$/;
+        let expresionprecio =/^[0-9]+([.][0-9]+)?$/;
         let expresioncant =/^[0-9]+$/;
         var OKid = expresionid.exec(codigo);
         var OKtext = expresiontextos.exec(nominsumo);

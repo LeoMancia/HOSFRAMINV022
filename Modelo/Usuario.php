@@ -40,24 +40,7 @@ class Usuario{
         $query->execute(array(':id_editado'=>$id_editado,':nombre'=>$nombre,':apellido'=>$apellido,':username'=>$username,':password'=>$password,':area'=>$area,':tipouser'=>$tipouser));
         echo 'editado';
     }
-    /*
-    function cambiar_contra($id_usuario,$oldpass,$newpass){
-        $sql="SELECT * FROM usuario WHERE id_usuario=:id AND contrasena_us=:oldpass";
-        $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id'=>$id_usuario,':oldpass'=>$oldpass));
-        $this->objetos = $query->fetchall();
-        if (!empty($this->objetos)) {
-            $sql="UPDATE usuario SET contrasena_us =:newpass WHERE id_usuario=:id";
-            $query=$this->acceso->prepare($sql);
-            $query->execute(array(':id'=>$id_usuario,':newpass'=>$newpass));
-            echo 'update';
-        } else {
-            echo 'noupdate';
-        }
-    }
-
-    
-    */
+   
     //crear un nuevo usuario mediante modal
     function crear($nombre,$apellido,$username,$contrasena,$area,$tipouser){
         //Select para verificar si existe un usuario con el mismo dui

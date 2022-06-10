@@ -1,8 +1,4 @@
 <?php
-session_start();
-if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
-    include_once 'layout/header.php';  
-    include_once 'layout/navbar.php';
 
   $dbHost     = 'localhost';
   $dbUsername = 'root';
@@ -61,17 +57,19 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
         try {
         
             restoreDatabaseTables($dbHost, $dbUsername, $dbPassword, $dbName, $filePath);
-            
-            //echo "The file ". htmlspecialchars( basename( $_FILES["file"]["name"])). " has been uploaded.";
-
-            echo "<script> Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'La Base de datos: <b>". htmlspecialchars( basename( $_FILES["file"]["name"]))."</b> Ha sido restaruada exitosamente.',
-              showConfirmButton: false,
-              timer: 2500
-            });
-            
+            echo "<script> 
+            setTimeout(function(){
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'La Base de datos: <b>". htmlspecialchars( basename( $_FILES["file"]["name"]))."</b> Ha sido restaruada exitosamente.',
+                showConfirmButton: false,
+                timer: 1500
+              });
+           }, 2500);
+           setTimeout(function(){
+               location.href = '../index.php'
+           }, 4500);
             </script>";
             
             
@@ -87,9 +85,5 @@ if (!empty($_SESSION['us_tipo']) && $_SESSION['us_tipo']==1) {
 
   }
 
-include_once 'layout/footer.php';
-}
-else {
-    header('Location: ../index.php');
-}
+
 ?>

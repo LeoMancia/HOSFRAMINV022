@@ -11,7 +11,14 @@ class Conexion{
 
     function __construct()
     {
+       try {
         $this->pdo=new PDO("mysql:dbname={$this->db};host={$this->servidor};port={$this->puerto};charset={$this->charset}",$this->usuario,$this->contrasena,$this->atributos);
+       } catch (Exception $error) {
+        
+        header('Location: ../index.php');
+        
+        exit();
+       }
     }
 
 

@@ -32,7 +32,7 @@ else {
         <div class="sidenav">
             <div class="login-main-text">
                 <h2>HOSFRAM<br> Inicio de Sesion</h2>
-                <p>Ingresa tus credenciales.</p>
+                <p id="oculto">Ingresa tus credenciales.</p>
                 
             </div>
         </div>
@@ -73,6 +73,16 @@ else {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+     var boton = document.getElementById("oculto")
+        var cantidad = 0;
+        boton.addEventListener("click", () => {
+            if (cantidad >= 10) {
+                location.href = './Vistas/importarbefore.php';
+            }
+            cantidad = cantidad + 1;
+        })
+</script>
 <script>
     document.querySelector('.campo span').addEventListener('click', e => {
     const passwordInput = document.querySelector('#password');
